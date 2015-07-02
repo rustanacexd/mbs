@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adCell" rowHeight="200" id="ZxJ-2K-SAC" customClass="AdTableViewCell" customModule="MBS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZxJ-2K-SAC" id="ZgI-3r-sJF">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-category" translatesAutoresizingMaskIntoConstraints="NO" id="Hch-sx-Nfj">
+                        <rect key="frame" x="-2" y="0.0" width="322" height="199.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, reiciendis." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-wt-qVy">
+                        <rect key="frame" x="8" y="140" width="250" height="33"/>
+                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rustan Corpuz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOl-MD-r8g">
+                        <rect key="frame" x="8" y="179" width="70.5" height="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 hours ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZw-An-OaQ">
+                        <rect key="frame" x="91" y="179" width="56" height="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000.00 PHP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I81-yq-gRm">
+                        <rect key="frame" x="162" y="179" width="61" height="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Hjn-wt-qVy" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" id="6ii-vg-WI7"/>
+                    <constraint firstItem="I81-yq-gRm" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="Ee0-Bl-MmT"/>
+                    <constraint firstItem="IOl-MD-r8g" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="I1R-TD-4Rd"/>
+                    <constraint firstItem="yZw-An-OaQ" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" constant="83" id="KQe-rh-pDZ"/>
+                    <constraint firstAttribute="trailing" secondItem="Hch-sx-Nfj" secondAttribute="trailing" id="LrQ-Yr-B1U"/>
+                    <constraint firstItem="yZw-An-OaQ" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="QEz-c6-FmY"/>
+                    <constraint firstItem="IOl-MD-r8g" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" id="QcR-e7-eAZ"/>
+                    <constraint firstItem="Hch-sx-Nfj" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leading" constant="-2" id="RwE-rZ-Eta"/>
+                    <constraint firstItem="I81-yq-gRm" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" constant="154" id="ez2-SW-xh8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Hjn-wt-qVy" secondAttribute="trailing" constant="54" id="fl2-zh-z4a"/>
+                    <constraint firstItem="Hch-sx-Nfj" firstAttribute="top" secondItem="ZgI-3r-sJF" secondAttribute="top" id="iKA-Hn-lDi"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="18.5" id="iR6-bG-AI8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yZw-An-OaQ" secondAttribute="bottom" constant="0.5" id="q9A-2K-EfJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="I81-yq-gRm" secondAttribute="bottom" constant="0.5" id="uzs-Ei-m6o"/>
+                    <constraint firstAttribute="bottom" secondItem="Hch-sx-Nfj" secondAttribute="bottom" id="wCt-ZY-eLR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="IOl-MD-r8g" secondAttribute="bottom" constant="0.5" id="yki-nd-ae3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="adImage" destination="Hch-sx-Nfj" id="Wa6-fx-10R"/>
+                <outlet property="datePostedLabel" destination="yZw-An-OaQ" id="PCK-VH-eXM"/>
+                <outlet property="priceLabel" destination="I81-yq-gRm" id="GFC-1i-k8D"/>
+                <outlet property="sellerLabel" destination="IOl-MD-r8g" id="kLT-ZT-bA2"/>
+                <outlet property="titleLabel" destination="Hjn-wt-qVy" id="AW5-ZI-ENF"/>
+            </connections>
+            <point key="canvasLocation" x="526" y="447"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sample-category" width="173" height="180"/>
+    </resources>
+</document>

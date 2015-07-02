@@ -1,0 +1,6 @@
+framework module DZNSegmentedControl {
+  umbrella header "Pods-DZNSegmentedControl-umbrella.h"
+
+  export *
+  module * { export * }
+}
