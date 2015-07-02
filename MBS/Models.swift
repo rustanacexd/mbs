@@ -8,42 +8,44 @@
 
 import Foundation
 import Parse
-
-struct Category {
-    let name: String
-    let image: UIImage?
-}
+import DateTools
 
 struct Advertisement {
     
-//    enum Condition: String {
-//        case BrandNew = "Brand New"
-//        case SecondHand = "Second Hand"
-//        case SlightyUsed = "Slightly Used"
-//    }
-    
     var title: String
-    var description: String
+    var description: String?
     var price: Double
     let image: PFFile
-    var category: Category
+    var category: String
     var sold: Bool = false
-    var condition: String
+    var condition: String?
     let seller: PFUser
     
     func getDescription() -> String {
         return "\(self.title) \(self.description)"
     }
     
-    init(imageData: NSData, title: String, description: String, price: Double, category: Category){
+    init(imageData: NSData, title: String, description: String?, price: Double, category: String, condition: String?){
         self.title = title
-        self.description = description
+        self.description = description != nil ? description! : ""
         self.price = price
         self.category = category
         self.sold = false
-        self.condition = "Brand New"
+        self.condition = condition != nil ? condition! : ""
         self.seller = PFUser.currentUser()!
-        self.image = PFFile(name: "\(self.title)-\(self.seller.username!)-\(NSDate())", data: imageData, contentType: ".jpg")
+        self.image = PFFile(name: "\(self.title)-\(self.seller.username!)-\(NSDate().shortTimeAgoSinceNow())",
+            data: imageData, contentType: ".jpg")
+    }
+    
+    init(image: PFFile, title: String, description: String?, price: Double, category: String, condition: String?, seller: PFUser){
+        self.title = title
+        self.description = description != nil ? description! : ""
+        self.price = price
+        self.category = category
+        self.sold = false
+        self.condition = condition != nil ? condition! : ""
+        self.seller = seller
+        self.image = image
     }
     
     func saveAd() {
@@ -60,7 +62,8 @@ struct Advertisement {
         let adObject = PFObject(className: "Advertisement")
         adObject["title"] = self.title
         adObject["description"] = self.description
-        adObject["category"] = self.category.name
+        adObject["price"] = self.price
+        adObject["category"] = self.category
         adObject["sold"] = self.sold
         adObject["condition"] = self.condition
         adObject["seller"] = self.seller
@@ -70,14 +73,51 @@ struct Advertisement {
     }
 }
 
+func pfObjectToAd(object: PFObject) -> Advertisement {
+    return Advertisement(image: object["image"] as! PFFile, title: object["title"] as! String,
+        description: object["description"] as? String, price: object["price"] as! Double,
+        category: object["category"] as! String,
+        condition: object["condition"] as? String, seller: object["seller"] as! PFUser)
+}
+
+
+func queryLatestAds() -> [Advertisement] {
+    
+    var ads:[Advertisement] = []
+    
+    var objects = PFQuery(className: "Advertisement")
+        .orderByDescending("createdAt")
+        .findObjects()
+    
+    ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+    return ads
+}
+
+
+//func queryLatestAds() -> [Advertisement] {
+//    
+//    var ads:[Advertisement] = []
+//    
+//    PFQuery(className: "Advertisement")
+//        .orderByDescending("createdAt")
+//        .findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let objects = results as? [PFObject] {
+//                    ads = map(objects, {pfObjectToAd($0)})
+//                }
+//            }
+//    }
+//    
+//    return ads
+//}
 
 class CurrentUser {
     static let sharedInstance = CurrentUser()
     let firstName = PFUser.currentUser()!["firstName"] as! String
-//    let lastName = PFUser.currentUser()!["lastName"] as! String
+    //    let lastName = PFUser.currentUser()!["lastName"] as! String
     let username = PFUser.currentUser()!["username"] as! String
     let email = PFUser.currentUser()!["gender"] as! String
-//    let verified = PFUser.currentUser()!["verified"] as! Bool
+    //    let verified = PFUser.currentUser()!["verified"] as! Bool
     let gender = PFUser.currentUser()!["gender"] as! String
     let facebookID = PFUser.currentUser()!["facebookID"] as! String
     

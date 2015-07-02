@@ -9,23 +9,23 @@
 import UIKit
 import Parse
 import DZNSegmentedControl
+import MBProgressHUD
 
 class ListTableViewController: UITableViewController, DZNSegmentedControlDelegate {
     
     var advertisements:[Advertisement] = []
     var segmentedControl: DZNSegmentedControl!
-   /* @IBOutlet weak var menuBarButton: UIBarButtonItem! */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-     /*   if self.revealViewController() != nil {
-            menuBarButton.target = self.revealViewController()
-            menuBarButton.action = "revealToggle:"
-            
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        } */
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            println(queryLatestAds())
+            dispatch_async(dispatch_get_main_queue(), {
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            })
+        })
  
         segmentedControl = DZNSegmentedControl(items: ["Recent","Popular","Most Viewed"])
         segmentedControl.delegate = self

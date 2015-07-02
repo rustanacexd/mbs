@@ -21,6 +21,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.2.0):
     - FBSDKCoreKit
+  - MBProgressHUD (0.9.1)
   - Onboard (2.1.5)
   - Parse (1.7.4):
     - Bolts/Tasks (>= 1.1.5)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (~> 4.2)
   - FBSDKLoginKit (~> 4.2)
   - FBSDKShareKit (~> 4.2)
+  - MBProgressHUD (~> 0.9.1)
   - Onboard
   - ParseFacebookUtilsV4 (~> 1.7)
   - ParseUI (~> 1.1)
@@ -53,6 +55,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
   FBSDKLoginKit: 57e37106af12c9e264e473dcb75d7decdbb07fe4
   FBSDKShareKit: 931746fdf8fb95efd6e12310ec14b2b3295e2aec
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Onboard: c58adaef5a377b0c45b4754c5cbe17d4627898c7
   Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
   ParseFacebookUtilsV4: 481ea7b00f8f62440c314ac7f80eada228bf7488

@@ -86,7 +86,7 @@ class GlobalSearchViewController: UITableViewController, UISearchResultsUpdating
                 searchString = advertisement.title
             }
             else if scope == 1 {
-                searchString = advertisement.description
+                searchString = advertisement.description!
             }
             
             for searchTerms in searchItems {

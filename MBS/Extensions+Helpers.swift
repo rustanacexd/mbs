@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 extension UIColor {
     class func lightGreen() -> UIColor{
@@ -124,6 +125,14 @@ extension UIImage {
         return imageData
     }
 }
+
+//extension PFObject {
+//    func pfObjectToAd(object: PFObject) -> Advertisement {
+//        return Advertisement(image: object["image"] as! PFFile, title: object["title"] as! String,
+//            description: object["description"] as? String, price: object["price"] as! Double,
+//            category: Category(name: object["category"] as! String, image: nil), condition: object["condition"] as? String)
+//    }
+//}
 
 
 

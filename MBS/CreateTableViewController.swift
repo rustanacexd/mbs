@@ -18,20 +18,20 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
-    var condition: String!
-    var category = ""
+    var condition: String?
+    var category: String!
     
     let categories = ["Gadgets", "Vehicles" ,"Real Estate", "Jobs", "Applicanes","Others"]
     let conditions = ["Brand New", "Slightly Used", "Second Hand", "Old"]
     
     let titleTextViewTag = 0
     let descriptonTextViewTag = 1
-    let titleTextViewPlaceholder = "Add Title Here"
-    let descriptionTextViewPlaceholder = "\r\n\r\n\r\n Add Description Here"
+    let titleTextViewPlaceholder = "Add Title Here *"
+    let descriptionTextViewPlaceholder = "\r\n\r\n\r\n Add Description Here *"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.tableFooterView = UIView()
         
         if self.revealViewController() != nil {
@@ -43,8 +43,8 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         let button = UIButton(frame: CGRect(x: view.frame.width - 55, y: 240, width: 50, height: 50))
         button.setImage(UIImage(named: "submit-ad-button"), forState: UIControlState.Normal)
+        button.addTarget(self, action: "submitAd", forControlEvents: UIControlEvents.TouchUpInside)
         tableView.addSubview(button)
-        
         
         priceTextField.delegate = self
         titleTextView.delegate = self
@@ -62,8 +62,9 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         titleTextView.text = titleTextViewPlaceholder
         descriptionTextView.text = descriptionTextViewPlaceholder
         titleTextView.textColor = UIColor.whiteColor()
+        
+        
     }
-    
     
     @IBAction func dismissModal(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -80,10 +81,55 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         }
     }
     
-    @IBAction func submitAd(sender: UIButton) {
-        let ad = Advertisement(imageData: UIImageJPEGRepresentation(imageView.image, 0.2), title: titleTextView.text, description: descriptionTextView.text!,
-            price: (priceTextField.text as NSString).doubleValue, category: Category(name: category, image: nil))
-        ad.saveAd()
+    func submitAd() {
+        
+        if validateFields() {
+            let ad = Advertisement(imageData: UIImageJPEGRepresentation(imageView.image, 0.2),
+                title: titleTextView.text, description: descriptionTextView.text,
+                price: (priceTextField.text as NSString).doubleValue, category: category, condition: condition)
+            
+            ad.saveAd()
+        }
+        
+    }
+    
+    private func validateFields() -> Bool {
+        var errorMessage = ""
+        
+        if imageView.image == nil {
+            errorMessage = "Advertisement Image is required"
+        }
+            
+        else if titleTextView.text == titleTextViewPlaceholder {
+            errorMessage = "Title is not set"
+        }
+            
+        else if priceTextField.text.isEmpty {
+            errorMessage = "Price is required"
+        }
+            
+        else if category.isEmpty {
+            errorMessage = "Category is required"
+        }
+            
+        else if contactTextField.text.isEmpty {
+            errorMessage = "Contact number is required"
+        }
+        
+        
+        let alertController = UIAlertController(title: "Missing Fields Required",
+            message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okAction = UIAlertAction(title: "Ok I'll fix it", style: UIAlertActionStyle.Default, handler: nil)
+        alertController.view.tintColor = UIColor.darkTextColor()
+        alertController.addAction(okAction)
+        
+        if !errorMessage.isEmpty {
+            presentViewController(alertController, animated: true, completion: nil)
+            return false
+        }
+        
+        return true
         
     }
     //MARK: - UITableView DataSource
@@ -103,9 +149,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             cell.layoutMargins = UIEdgeInsetsZero
         }
         
-        
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -130,6 +174,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
                     initialSelection: 0, doneBlock: { (pciker, selectedIndex, value) -> Void in
                         
                         currentCell.detailTextLabel?.text = "\(value)"
+                        self.category = "\(value)"
                         
                     }, cancelBlock: nil, origin: self.view)
             }
@@ -138,6 +183,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
                 action = ActionSheetStringPicker(title: "Select condition", rows: conditions,
                     initialSelection: 0, doneBlock: { (pciker, selectedIndex, value) -> Void in
                         currentCell.detailTextLabel?.text = "\(value)"
+                        self.condition  = "\(value)"
                     }, cancelBlock: nil, origin: self.view)
             }
             
@@ -149,7 +195,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-    
+        
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.clipsToBounds = true
@@ -165,6 +211,17 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if (range.length + range.location > count(textField.text) )
+        {
+            return false;
+        }
+        
+        let newLength = count(textField.text) + count(string) - range.length
+        return newLength <= 11
+    }
+    
     //MARK: - UITextViewDelegate
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -175,12 +232,6 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         if textView.text == titleTextViewPlaceholder || textView.text == descriptionTextViewPlaceholder{
             textView.text = nil
         }
-        
-        //        if textView.textColor == UIColor.lightGrayColor() {
-        //            textView.text = nil
-        //            textView.textColor = UIColor.blackColor()
-        //        }
-        
     }
     
     func textViewDidEndEditing(textView: UITextView) {
@@ -196,6 +247,17 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             //            textView.textColor = UIColor.lightGrayColor()
         }
         
+    }
+    
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if (range.length + range.location > count(textView.text)) {
+            return false;
+        }
+        
+        let newLength = count(textView.text) + count(text) - range.length
+        
+        return textView.tag == titleTextViewTag ? newLength <= 80 : newLength <= 320
     }
     
     override func prefersStatusBarHidden() -> Bool {
