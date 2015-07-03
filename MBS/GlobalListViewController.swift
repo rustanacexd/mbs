@@ -28,9 +28,13 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         }
         
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                        
+        
+        hud.labelText = "loading"
+        hud.detailsLabelText = "fetching ads"
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             self.advertisements = fetchAds("createdAt")
+            sleep(5)
             dispatch_async(dispatch_get_main_queue(), {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
                 self.tableView.reloadData()
@@ -100,11 +104,17 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
             cell.layoutMargins = UIEdgeInsetsZero
         }
         
+        
+        let ad = advertisements[indexPath.row]
+        cell.titleLabel.text = ad.title
+        cell.priceLabel.text = "\(ad.price)"
+        cell.adImage.image = UIImage(named: "sample-category")
+        cell.adImage.file = ad.image
+        cell.adImage.loadInBackground()
+        
+        
         return cell
     }
-    
-    
-    
     
     
     /*

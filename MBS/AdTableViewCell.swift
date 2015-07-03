@@ -21,13 +21,7 @@ class AdTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
-//        PFImageView *imageView = [[PFImageView alloc] init];
-//        imageView.image = [UIImage imageNamed:@"..."]; // placeholder image
-//        imageView.file = (PFFile *)someObject[@"picture"]; // remote image
-//        [imageView loadInBackground];
-        
+    
         titleLabel.sizeThatFits(titleLabel.frame.size)
     }
 
