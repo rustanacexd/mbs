@@ -43,7 +43,7 @@ class LoginViewController: PFLogInViewController{
             y: logInView!.frame.height - facebookButtonSize!.height - 5, width: view.frame.width,
             height: facebookButtonSize!.height + 5)
         
-        logInView?.facebookButton?.backgroundColor = UIColor.lightGreen()
+        logInView?.facebookButton?.backgroundColor = UIColor.facebookBlue()
         
     }
     

@@ -15,11 +15,13 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
     
     var advertisements:[Advertisement] = []
     var segmentedControl: DZNSegmentedControl!
+    var selectedCategory: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             println(queryLatestAds())
             dispatch_async(dispatch_get_main_queue(), {
@@ -35,7 +37,7 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
         segmentedControl.height = 40
         segmentedControl.showsCount = false
         segmentedControl.autoAdjustSelectionIndicatorWidth = false
-        segmentedControl.tintColor = UIColor.lightGrayColor()
+        segmentedControl.tintColor = UIColor.facebookBlue()
         segmentedControl.font = UIFont(name: "Avenir", size: 14)
         tableView.tableHeaderView = segmentedControl
         

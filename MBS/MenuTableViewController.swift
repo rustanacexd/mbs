@@ -36,6 +36,7 @@ class MenuTableViewController: UITableViewController {
         profilePicture.clipsToBounds = true
         profilePicture.profileID = CurrentUser.sharedInstance.facebookID
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor.facebookBlue()
         
     }
     
@@ -48,12 +49,17 @@ class MenuTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.Default
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
+        backgroundView.backgroundColor = UIColor.lightBlue()
+        cell.selectedBackgroundView =  backgroundView
+        cell.backgroundColor = UIColor.facebookBlue()
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.font = UIFont(name: "Avenir-Book", size: 16.0)
+        //        let separatorLine = UIView(frame: CGRect(x: 0, y: cell.frame.height, width: cell.frame.width, height: 0.25))
+        //        separatorLine.backgroundColor = UIColor.whiteColor()
+        //        cell.contentView.addSubview(separatorLine)
         
-        let separatorLine = UIView(frame: CGRect(x: 0, y: cell.frame.height, width: cell.frame.width, height: 0.25))
-        separatorLine.backgroundColor = UIColor.lightGrayColor()
-        cell.contentView.addSubview(separatorLine)
-    
     }
     
     

@@ -30,8 +30,7 @@ class LoginConfigViewController: UIViewController, PFLogInViewControllerDelegate
             
         }
     }
-    
-    
+ 
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         
         if user.isNew {

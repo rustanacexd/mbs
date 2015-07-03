@@ -19,10 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        //        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        //        self.window!.backgroundColor = UIColor.whiteColor()
-        
+   
         // Initialize Parse.
         Parse.setApplicationId("G4BT3C86cGOYTHui6hoYNgr3n1ULiXIKz3vyoNiG",
             clientKey: "wqJw5KkRsmez6BlzrltwRbkxY3SSENqYOZm0BnMJ")
@@ -32,26 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
-        //UIApplication.sharedApplication().statusBarHidden = true
-        
-        //        UILabel.appearance().substituteFontName = "Avenir"
-        //        UILabel.appearance().substituteFontNameBold = "Avenir-Black"
-        
-        if let barFont = UIFont(name: "Avenir-Book", size: 17.0) {
-            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:barFont]
+        if let barFont = UIFont(name: "Avenir-Heavy", size: 17.0) {
+            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:barFont, NSForegroundColorAttributeName:UIColor.whiteColor()]
         }
         
-        
-        UINavigationBar.appearance().tintColor = UIColor.lightGrayColor()
-        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().barTintColor = UIColor.facebookBlue()
         UINavigationBar.appearance().translucent = false
         
-        
-        
         var userHasOnboardedAlready = NSUserDefaults.standardUserDefaults().boolForKey(userHasOnboardedKey);
-        
-        //                PFUser.logOut()
-        
         if userHasOnboardedAlready {
             self.setupNormalRootVC(false);
         }

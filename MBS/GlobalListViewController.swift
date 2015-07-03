@@ -28,7 +28,7 @@ class GlobalListViewController: UITableViewController {
         
         tableView.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
-                sleep(2)
+                println(queryLatestAds())
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.tableView.stopPullToRefresh()
                 }

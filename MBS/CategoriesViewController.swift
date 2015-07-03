@@ -33,14 +33,12 @@ class CategoriesViewController: UICollectionViewController{
             CGSize(width: self.view.frame.size.width * 0.45, height: 230)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
-        
-        
-        
+    
     }
     
     private func goToFeedController(){
         feedVC.navigationItem.title = selectedCategory
+        feedVC.selectedCategory = selectedCategory
         self.navigationController?.pushViewController(feedVC, animated: true)
     }
     

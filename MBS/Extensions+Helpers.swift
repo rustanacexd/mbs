@@ -11,8 +11,12 @@ import UIKit
 import Parse
 
 extension UIColor {
-    class func lightGreen() -> UIColor{
-        return UIColor(red: 80.0 / 255.0, green: 227.0 / 225.0, blue: 194.0 / 225.0, alpha: 0.8)
+    class func lightBlue() -> UIColor {
+        return UIColor(red: 139/255.0, green: 157/255.0, blue: 195/255.0, alpha: 1.0)
+    }
+
+    class func facebookBlue() -> UIColor {
+        return  UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1.0)
     }
 }
 
@@ -81,7 +85,7 @@ extension UIView {
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done,
             target: self, action: Selector("endEditing:"))
         
-        doneBarButton.tintColor = UIColor.darkGrayColor()
+        doneBarButton.tintColor = UIColor.facebookBlue()
         
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         

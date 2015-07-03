@@ -34,7 +34,7 @@ class PacmanAnimator: PullToRefreshViewAnimator {
     init() {
         
         layerLoader.lineWidth = 8
-        layerLoader.strokeColor = UIColor.lightGreen().CGColor
+        layerLoader.strokeColor = UIColor.facebookBlue().CGColor
         layerLoader.strokeEnd = 0
         layerLoader.fillColor = UIColor.clearColor().CGColor
         

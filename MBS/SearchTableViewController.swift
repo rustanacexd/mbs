@@ -25,7 +25,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
 //        }
         
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.tintColor = UIColor.blackColor()
+        searchController.searchBar.tintColor = UIColor.facebookBlue()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self

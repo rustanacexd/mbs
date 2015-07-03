@@ -42,7 +42,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         }
         
         let button = UIButton(frame: CGRect(x: view.frame.width - 55, y: 240, width: 50, height: 50))
-        button.setImage(UIImage(named: "submit-ad-button"), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: "submit-add"), forState: UIControlState.Normal)
         button.addTarget(self, action: "submitAd", forControlEvents: UIControlEvents.TouchUpInside)
         tableView.addSubview(button)
         
@@ -63,6 +63,17 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         descriptionTextView.text = descriptionTextViewPlaceholder
         titleTextView.textColor = UIColor.whiteColor()
         
+        priceTextField.textColor = UIColor.facebookBlue()
+        contactTextField.textColor = UIColor.facebookBlue()
+        
+        let pricePlaceholder = NSAttributedString(string: "Price",
+            attributes: [NSForegroundColorAttributeName:UIColor.lightBlue()])
+        
+        let contactPlaceholder =  NSAttributedString(string: "Mobile Number",
+            attributes: [NSForegroundColorAttributeName:UIColor.lightBlue()])
+        
+        priceTextField.attributedPlaceholder = pricePlaceholder
+        contactTextField.attributedPlaceholder  = contactPlaceholder
         
     }
     
@@ -121,7 +132,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "Ok I'll fix it", style: UIAlertActionStyle.Default, handler: nil)
-        alertController.view.tintColor = UIColor.darkTextColor()
+        alertController.view.tintColor = UIColor.facebookBlue()
         alertController.addAction(okAction)
         
         if !errorMessage.isEmpty {
@@ -149,7 +160,12 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             cell.layoutMargins = UIEdgeInsetsZero
         }
         
+        if indexPath.row == 0 {
+            cell.backgroundColor = UIColor.lightBlue()
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.detailTextLabel?.textColor = UIColor.lightBlue()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -162,8 +178,8 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel,
                 target: self, action: "endEditing:")
             
-            doneButton.tintColor = UIColor.darkGrayColor()
-            cancelButton.tintColor = UIColor.darkGrayColor()
+            doneButton.tintColor = UIColor.facebookBlue()
+            cancelButton.tintColor = UIColor.facebookBlue()
             
             let currentCell = tableView.cellForRowAtIndexPath(indexPath)!
             
@@ -262,6 +278,15 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func navigationController(navigationController: UINavigationController,
+        willShowViewController viewController: UIViewController, animated: Bool) {
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+    }
+    
+    override func childViewControllerForStatusBarHidden() -> UIViewController? {
+        return nil
     }
     
     
