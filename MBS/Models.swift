@@ -19,53 +19,58 @@ struct Advertisement {
     var sold: Bool = false
     var condition: String?
     let seller: PFUser
+    let sellerUsername: String
     let createdAt: NSDate
     
     func getDescription() -> String {
         return "\(self.title) \(self.description)"
     }
     
-    func getSellerUsername () -> String {
-        var username = ""
-        
-        (self.toPFObject()["seller"]! as! PFUser).fetchIfNeededInBackgroundWithBlock({
-            (seller: PFObject?, error: NSError?) -> Void in
-            username = (seller as! PFUser).username!
-        })
-        
-        return username
+    //    func getSellerUsername () -> String {
+    //        var username = ""
+    //
+    //        (self.toPFObject()["seller"]! as! PFUser).fetchIfNeededInBackgroundWithBlock({
+    //            (seller: PFObject?, error: NSError?) -> Void in
+    //            username = (seller as! PFUser).username!
+    //        })
+    //
+    //        return username
+    //    }
+    
+    
+    init(imageData: NSData, title: String, description: String?, price: Double,
+        category: String, condition: String?){
+            
+            self.title = title
+            self.description = description != nil ? description! : ""
+            self.price = price
+            self.category = category
+            self.sold = false
+            self.condition = condition != nil ? condition! : ""
+            self.seller = PFUser.currentUser()!
+            self.sellerUsername = PFUser.currentUser()!.username!
+            self.image = PFFile(name: "\(self.seller.username!)",
+                data: imageData, contentType: ".jpg")
+            self.createdAt = NSDate()
     }
     
-    
-    init(imageData: NSData, title: String, description: String?, price: Double, category: String, condition: String?){
-        self.title = title
-        self.description = description != nil ? description! : ""
-        self.price = price
-        self.category = category
-        self.sold = false
-        self.condition = condition != nil ? condition! : ""
-        self.seller = PFUser.currentUser()!
-        self.image = PFFile(name: "\(self.seller.username!)",
-            data: imageData, contentType: ".jpg")
-        self.createdAt = NSDate()
-    }
-    
-    init(image: PFFile, title: String, description: String?, price: Double, category: String, condition: String?, seller: PFUser, createdAt: NSDate){
-        self.title = title
-        self.description = description != nil ? description! : ""
-        self.price = price
-        self.category = category
-        self.sold = false
-        self.condition = condition != nil ? condition! : ""
-        self.seller = seller
-        self.image = image
-        self.createdAt = createdAt
+    init(image: PFFile, title: String, description: String?, price: Double, category: String,
+        condition: String?, seller: PFUser,sellerUsername: String, createdAt: NSDate){
+            
+            self.title = title
+            self.description = description != nil ? description! : ""
+            self.price = price
+            self.category = category
+            self.sold = false
+            self.condition = condition != nil ? condition! : ""
+            self.seller = seller
+            self.sellerUsername = sellerUsername
+            self.image = image
+            self.createdAt = createdAt
     }
     
     func saveAd() -> Bool{
-        
         var status = false
-        
         self.toPFObject().saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
                 status = true
@@ -86,11 +91,55 @@ struct Advertisement {
         adObject["sold"] = self.sold
         adObject["condition"] = self.condition
         adObject["seller"] = self.seller
+        adObject["sellerUsername"] = self.sellerUsername
         adObject["image"] = self.image
-        
         return adObject
     }
 }
+
+func pfObjectToAd(object: PFObject) -> Advertisement {
+    return Advertisement(image: object["image"] as! PFFile, title: object["title"] as! String,
+        description: object["description"] as? String, price: object["price"] as! Double,
+        category: object["category"] as! String,
+        condition: object["condition"] as? String, seller: object["seller"] as! PFUser,
+        sellerUsername: object["sellerUsername"] as! String,createdAt: object.createdAt!)
+}
+
+
+func fetchAds() -> [Advertisement] {
+    var ads = [Advertisement]()
+    let query = PFQuery(className: "Advertisement")
+    var objects = query.findObjects()
+    
+    if let unwrappedObjects = objects {
+        ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+    }
+    
+    return ads
+}
+
+//func fetchAds(parameter: String? = nil) -> [Advertisement] {
+//
+//    var ads = [Advertisement]()
+//    let query = PFQuery(className: "Advertisement")
+//
+//    if let predicate = parameter {
+//        if predicate == "createdAt" {
+//            query.orderByDescending("createdAt")
+//        }
+//        else if predicate == "price" {
+//            query.orderByAscending("price")
+//        }
+//    }
+//
+//    var objects = query.findObjects()
+//
+//    if let unwrappedObjects = objects {
+//        ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+//    }
+//
+//    return ads
+//}
 
 class CurrentUser {
     static let sharedInstance = CurrentUser()

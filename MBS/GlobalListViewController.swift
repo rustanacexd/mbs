@@ -67,7 +67,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
                     self.tableView.stopPullToRefresh()
                 }
             }
-        }, withAnimator: PacmanAnimator())
+            }, withAnimator: PacmanAnimator())
         
     }
     
@@ -84,7 +84,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         case 2:
             advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
         default:
-            advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedAscending}
+            advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending}
         }
         
         tableView.reloadData()
@@ -124,9 +124,9 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         cell.adImage.file = ad.image
         cell.adImage.loadInBackground()
         cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
-        cell.sellerLabel.text = ad.getSellerUsername()
+        cell.sellerLabel.text = ad.sellerUsername
         
         return cell
     }
- 
+    
 }
