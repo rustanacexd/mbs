@@ -22,9 +22,7 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
 func fetchAds() -> [Advertisement] {
     
     var ads = [Advertisement]()
-    let query = PFQuery(className: "Advertisement")
-
-    
+    let query = PFQuery(className: "Advertisement")  
     var objects = query.findObjects()
     
     if let unwrappedObjects = objects {

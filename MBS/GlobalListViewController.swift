@@ -96,8 +96,6 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return advertisements.count
     }
     
@@ -126,6 +124,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         cell.adImage.file = ad.image
         cell.adImage.loadInBackground()
         cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.getSellerUsername()
         
         return cell
     }

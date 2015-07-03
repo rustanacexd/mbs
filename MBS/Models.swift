@@ -25,6 +25,18 @@ struct Advertisement {
         return "\(self.title) \(self.description)"
     }
     
+    func getSellerUsername () -> String {
+        var username = ""
+        
+        (self.toPFObject()["seller"]! as! PFUser).fetchIfNeededInBackgroundWithBlock({
+            (seller: PFObject?, error: NSError?) -> Void in
+            username = (seller as! PFUser).username!
+        })
+        
+        return username
+    }
+    
+    
     init(imageData: NSData, title: String, description: String?, price: Double, category: String, condition: String?){
         self.title = title
         self.description = description != nil ? description! : ""
