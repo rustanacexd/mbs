@@ -9,7 +9,6 @@
 import Foundation
 import Parse
 
-
 func pfObjectToAd(object: PFObject) -> Advertisement {
     return Advertisement(image: object["image"] as! PFFile, title: object["title"] as! String,
         description: object["description"] as? String, price: object["price"] as! Double,
@@ -20,13 +19,11 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
 }
 
 
-func fetchAds(parameter: String? = nil) -> [Advertisement] {
+func fetchAds() -> [Advertisement] {
     
     var ads = [Advertisement]()
     let query = PFQuery(className: "Advertisement")
-    if let predicate = parameter {
-        query.orderByDescending(predicate)
-    }
+
     
     var objects = query.findObjects()
     
@@ -38,21 +35,27 @@ func fetchAds(parameter: String? = nil) -> [Advertisement] {
 }
 
 
-
-
-//func queryLatestAds() -> [Advertisement] {
-//
-//    var ads:[Advertisement] = []
-//
-//    PFQuery(className: "Advertisement")
-//        .orderByDescending("createdAt")
-//        .findObjectsInBackgroundWithBlock { (results: [AnyObject]?, error: NSError?) -> Void in
-//            if error == nil {
-//                if let objects = results as? [PFObject] {
-//                    ads = map(objects, {pfObjectToAd($0)})
-//                }
-//            }
+//func fetchAds(parameter: String? = nil) -> [Advertisement] {
+//    
+//    var ads = [Advertisement]()
+//    let query = PFQuery(className: "Advertisement")
+//    
+//    if let predicate = parameter {
+//        if predicate == "createdAt" {
+//            query.orderByDescending("createdAt")
+//        }
+//        else if predicate == "price" {
+//            query.orderByAscending("price")
+//        }
 //    }
-//
+//    
+//    var objects = query.findObjects()
+//    
+//    if let unwrappedObjects = objects {
+//        ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+//    }
+//    
 //    return ads
 //}
+
+

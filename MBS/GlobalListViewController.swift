@@ -28,14 +28,13 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        //Setup HUD
+        //Initial Fetch
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "loading"
         hud.detailsLabelText = "fetching ads"
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            self.advertisements = fetchAds(parameter: "createdAt")
-            sleep(5)
+            self.advertisements = fetchAds()
             dispatch_async(dispatch_get_main_queue(), {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
                 self.tableView.reloadData()
@@ -79,14 +78,11 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     
     func selectedSegment(control: DZNSegmentedControl) {
         
-        switch control.selectedSegmentIndex {
-        case 1:
-            advertisements = fetchAds(parameter: "price")
-        case 2:
-            advertisements = fetchAds().sorted({$0.title < $01.title})
-        default:
-            advertisements = fetchAds(parameter: "createdAt")
-        }
+//        switch control.selectedSegmentIndex {
+//        case 1:
+//        case 2:
+//        default:
+//        }
         
         tableView.reloadData()
     }
@@ -130,16 +126,5 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         
         return cell
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
+ 
 }
