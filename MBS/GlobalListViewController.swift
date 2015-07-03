@@ -78,11 +78,14 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     
     func selectedSegment(control: DZNSegmentedControl) {
         
-//        switch control.selectedSegmentIndex {
-//        case 1:
-//        case 2:
-//        default:
-//        }
+        switch control.selectedSegmentIndex {
+        case 1:
+            advertisements.sort {$0.price < $1.price}
+        case 2:
+            advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
+        default:
+            advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedAscending}
+        }
         
         tableView.reloadData()
     }
