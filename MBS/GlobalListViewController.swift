@@ -10,6 +10,7 @@ import UIKit
 import Refresher
 import DZNSegmentedControl
 import MBProgressHUD
+import DateTools
 
 class GlobalListViewController: UITableViewController, DZNSegmentedControlDelegate {
     
@@ -20,15 +21,15 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //Setup Reveal Menu
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        //Setup HUD
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
         hud.labelText = "loading"
         hud.detailsLabelText = "fetching ads"
         
@@ -41,6 +42,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
             })
         })
         
+        //Setup Segmented Control
         segmentedControl = DZNSegmentedControl(items: ["Recent","Popular","Most Viewed"])
         segmentedControl.delegate = self
         segmentedControl.selectedSegmentIndex = 0
@@ -53,17 +55,20 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         segmentedControl.font = UIFont(name: "Avenir", size: 14)
         tableView.tableHeaderView = segmentedControl
         
+        //Register Custom Cell from xib
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
+        
+        //Do not show empty rows
         tableView.tableFooterView = UIView()
         
-        
+        //Pull to refresh
         tableView.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.tableView.stopPullToRefresh()
                 }
             }
-            }, withAnimator: PacmanAnimator())
+        }, withAnimator: PacmanAnimator())
         
     }
     
@@ -73,6 +78,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     
     
     func selectedSegment(control: DZNSegmentedControl) {
+        
         tableView.reloadData()
     }
     
@@ -111,7 +117,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         cell.adImage.image = UIImage(named: "sample-category")
         cell.adImage.file = ad.image
         cell.adImage.loadInBackground()
-        
+        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
         
         return cell
     }

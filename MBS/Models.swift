@@ -8,7 +8,6 @@
 
 import Foundation
 import Parse
-import DateTools
 
 struct Advertisement {
     
@@ -20,6 +19,7 @@ struct Advertisement {
     var sold: Bool = false
     var condition: String?
     let seller: PFUser
+    let createdAt: NSDate
     
     func getDescription() -> String {
         return "\(self.title) \(self.description)"
@@ -33,11 +33,12 @@ struct Advertisement {
         self.sold = false
         self.condition = condition != nil ? condition! : ""
         self.seller = PFUser.currentUser()!
-        self.image = PFFile(name: "\(self.title)-\(self.seller.username!)-\(NSDate().shortTimeAgoSinceNow())",
+        self.image = PFFile(name: "\(self.title)-\(self.seller.username!)",
             data: imageData, contentType: ".jpg")
+        self.createdAt = NSDate()
     }
     
-    init(image: PFFile, title: String, description: String?, price: Double, category: String, condition: String?, seller: PFUser){
+    init(image: PFFile, title: String, description: String?, price: Double, category: String, condition: String?, seller: PFUser, createdAt: NSDate){
         self.title = title
         self.description = description != nil ? description! : ""
         self.price = price
@@ -46,6 +47,7 @@ struct Advertisement {
         self.condition = condition != nil ? condition! : ""
         self.seller = seller
         self.image = image
+        self.createdAt = createdAt
     }
     
     func saveAd() {

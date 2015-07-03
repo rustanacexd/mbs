@@ -14,7 +14,9 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
     return Advertisement(image: object["image"] as! PFFile, title: object["title"] as! String,
         description: object["description"] as? String, price: object["price"] as! Double,
         category: object["category"] as! String,
-        condition: object["condition"] as? String, seller: object["seller"] as! PFUser)
+        condition: object["condition"] as? String, seller: object["seller"] as! PFUser,
+        createdAt: object.createdAt!
+    )
 }
 
 
