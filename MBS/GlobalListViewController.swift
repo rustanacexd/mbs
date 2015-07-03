@@ -20,14 +20,15 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             self.advertisements = fetchAds("createdAt")
             dispatch_async(dispatch_get_main_queue(), {

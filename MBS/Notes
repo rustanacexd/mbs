@@ -1,3 +1,10 @@
+//TODO
+
+
+
+
+
+
 
 {
 bio = "Web and Mobile Application Developer. Aspiring Tech Entrepreneur!";
@@ -15,20 +22,7 @@ verified = 1;
 }
 
 
-{
-bio = "Web and Mobile Application Developer. Aspiring Tech Entrepreneur!";
-"first_name" = Rustan;
-gender = male;
-id = 1005422972835614;
-"last_name" = Corpuz;
-link = "https://www.facebook.com/app_scoped_user_id/1005422972835614/";
-picture =     {
-data =         {
-"is_silhouette" = 0;
-url = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p50x50/11217805_1004031949641383_8882059424668227691_n.jpg?oh=f25b806c300296c7298ce7df3d40513e&oe=55E64044&__gda__=1441902123_cfd2ea2e76eb05815abea31c91834428";
-};
-};
-}
+
 
 
 
