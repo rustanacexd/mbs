@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import ParseUI
 
 class AdTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var adImage: UIImageView!
+    @IBOutlet weak var adImage: PFImageView!
     @IBOutlet weak var sellerLabel: UILabel!
     @IBOutlet weak var datePostedLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -20,6 +21,12 @@ class AdTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
+//        PFImageView *imageView = [[PFImageView alloc] init];
+//        imageView.image = [UIImage imageNamed:@"..."]; // placeholder image
+//        imageView.file = (PFFile *)someObject[@"picture"]; // remote image
+//        [imageView loadInBackground];
         
         titleLabel.sizeThatFits(titleLabel.frame.size)
     }

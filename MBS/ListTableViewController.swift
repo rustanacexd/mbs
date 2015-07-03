@@ -23,7 +23,6 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            println(queryLatestAds())
             dispatch_async(dispatch_get_main_queue(), {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
             })

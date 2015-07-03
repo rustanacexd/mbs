@@ -18,14 +18,17 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
 }
 
 
-func queryLatestAds() -> [Advertisement] {
+func fetchAds(parameter: String) -> [Advertisement] {
     var objects = PFQuery(className: "Advertisement")
-        .orderByDescending("createdAt")
+        .orderByDescending(parameter)
         .findObjects()
     
     let ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
     return ads
 }
+
+
+
 
 //func queryLatestAds() -> [Advertisement] {
 //

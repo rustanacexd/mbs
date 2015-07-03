@@ -8,10 +8,14 @@
 
 import UIKit
 import Refresher
+import DZNSegmentedControl
+import MBProgressHUD
 
-class GlobalListViewController: UITableViewController {
+class GlobalListViewController: UITableViewController, DZNSegmentedControlDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var advertisements:[Advertisement] = []
+    var segmentedControl: DZNSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,27 +26,60 @@ class GlobalListViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            self.advertisements = fetchAds("createdAt")
+            dispatch_async(dispatch_get_main_queue(), {
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                self.tableView.reloadData()
+            })
+        })
+        
+        segmentedControl = DZNSegmentedControl(items: ["Recent","Popular","Most Viewed"])
+        segmentedControl.delegate = self
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: "selectedSegment:", forControlEvents: UIControlEvents.ValueChanged)
+        segmentedControl.bouncySelectionIndicator = true
+        segmentedControl.height = 40
+        segmentedControl.showsCount = false
+        segmentedControl.autoAdjustSelectionIndicatorWidth = false
+        segmentedControl.tintColor = UIColor.facebookBlue()
+        segmentedControl.font = UIFont(name: "Avenir", size: 14)
+        tableView.tableHeaderView = segmentedControl
+        
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         tableView.tableFooterView = UIView()
         
         
         tableView.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
-                println(queryLatestAds())
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.tableView.stopPullToRefresh()
                 }
             }
-        }, withAnimator: PacmanAnimator())
+            }, withAnimator: PacmanAnimator())
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
+    
+    func selectedSegment(control: DZNSegmentedControl) {
+        tableView.reloadData()
+    }
+    
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.Bottom
+    }
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 6
+        return advertisements.count
     }
     
     

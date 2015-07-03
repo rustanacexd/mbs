@@ -108,7 +108,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         var errorMessage = ""
         
         if imageView.image == nil {
-            errorMessage = "Advertisement Image is required"
+            errorMessage = "Image is required"
         }
             
         else if titleTextView.text == titleTextViewPlaceholder {
@@ -128,7 +128,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         }
         
         
-        let alertController = UIAlertController(title: "Missing Fields Required",
+        let alertController = UIAlertController(title: "Missing Fields",
             message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
         let okAction = UIAlertAction(title: "Ok I'll fix it", style: UIAlertActionStyle.Default, handler: nil)
