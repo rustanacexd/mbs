@@ -20,12 +20,20 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
 }
 
 
-func fetchAds(parameter: String) -> [Advertisement] {
-    var objects = PFQuery(className: "Advertisement")
-        .orderByDescending(parameter)
-        .findObjects()
+func fetchAds(parameter: String? = nil) -> [Advertisement] {
     
-    let ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+    var ads = [Advertisement]()
+    let query = PFQuery(className: "Advertisement")
+    if let predicate = parameter {
+        query.orderByDescending(predicate)
+    }
+    
+    var objects = query.findObjects()
+    
+    if let unwrappedObjects = objects {
+        ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+    }
+    
     return ads
 }
 

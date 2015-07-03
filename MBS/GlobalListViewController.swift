@@ -34,7 +34,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         hud.detailsLabelText = "fetching ads"
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            self.advertisements = fetchAds("createdAt")
+            self.advertisements = fetchAds(parameter: "createdAt")
             sleep(5)
             dispatch_async(dispatch_get_main_queue(), {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -43,7 +43,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         })
         
         //Setup Segmented Control
-        segmentedControl = DZNSegmentedControl(items: ["Recent","Popular","Most Viewed"])
+        segmentedControl = DZNSegmentedControl(items: ["Recent","Cheapest","Alphabetically"])
         segmentedControl.delegate = self
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: "selectedSegment:", forControlEvents: UIControlEvents.ValueChanged)
@@ -79,6 +79,15 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     
     func selectedSegment(control: DZNSegmentedControl) {
         
+        switch control.selectedSegmentIndex {
+        case 1:
+            advertisements = fetchAds(parameter: "price")
+        case 2:
+            advertisements = fetchAds().sorted({$0.title < $01.title})
+        default:
+            advertisements = fetchAds(parameter: "createdAt")
+        }
+        
         tableView.reloadData()
     }
     
@@ -113,7 +122,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
-        cell.priceLabel.text = "\(ad.price)"
+        cell.priceLabel.text = "\(ad.price) PHP"
         cell.adImage.image = UIImage(named: "sample-category")
         cell.adImage.file = ad.image
         cell.adImage.loadInBackground()

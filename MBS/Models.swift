@@ -33,7 +33,7 @@ struct Advertisement {
         self.sold = false
         self.condition = condition != nil ? condition! : ""
         self.seller = PFUser.currentUser()!
-        self.image = PFFile(name: "\(self.title)-\(self.seller.username!)",
+        self.image = PFFile(name: "\(self.seller.username!)",
             data: imageData, contentType: ".jpg")
         self.createdAt = NSDate()
     }
@@ -50,14 +50,19 @@ struct Advertisement {
         self.createdAt = createdAt
     }
     
-    func saveAd() {
+    func saveAd() -> Bool{
+        
+        var status = false
+        
         self.toPFObject().saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if success {
-                
+                status = true
+                println("done")
             } else {
                 println(error?.description)
             }
         }
+        return status
     }
     
     func toPFObject() -> PFObject{

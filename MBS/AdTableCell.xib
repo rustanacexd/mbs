@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000.00 PHP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I81-yq-gRm">
-                        <rect key="frame" x="162" y="179" width="61" height="12"/>
+                        <rect key="frame" x="159" y="179" width="61" height="12"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -43,21 +43,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hjn-wt-qVy" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" id="6ii-vg-WI7"/>
-                    <constraint firstItem="I81-yq-gRm" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="Ee0-Bl-MmT"/>
-                    <constraint firstItem="IOl-MD-r8g" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="I1R-TD-4Rd"/>
-                    <constraint firstItem="yZw-An-OaQ" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" constant="83" id="KQe-rh-pDZ"/>
                     <constraint firstAttribute="trailing" secondItem="Hch-sx-Nfj" secondAttribute="trailing" id="LrQ-Yr-B1U"/>
-                    <constraint firstItem="yZw-An-OaQ" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="QEz-c6-FmY"/>
-                    <constraint firstItem="IOl-MD-r8g" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" id="QcR-e7-eAZ"/>
                     <constraint firstItem="Hch-sx-Nfj" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leading" constant="-2" id="RwE-rZ-Eta"/>
-                    <constraint firstItem="I81-yq-gRm" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" constant="154" id="ez2-SW-xh8"/>
+                    <constraint firstItem="yZw-An-OaQ" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="VUS-WB-INe"/>
+                    <constraint firstItem="IOl-MD-r8g" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="dVU-ve-aYa"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Hjn-wt-qVy" secondAttribute="trailing" constant="54" id="fl2-zh-z4a"/>
                     <constraint firstItem="Hch-sx-Nfj" firstAttribute="top" secondItem="ZgI-3r-sJF" secondAttribute="top" id="iKA-Hn-lDi"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="18.5" id="iR6-bG-AI8"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="yZw-An-OaQ" secondAttribute="bottom" constant="0.5" id="q9A-2K-EfJ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="I81-yq-gRm" secondAttribute="bottom" constant="0.5" id="uzs-Ei-m6o"/>
+                    <constraint firstItem="IOl-MD-r8g" firstAttribute="leading" secondItem="ZgI-3r-sJF" secondAttribute="leadingMargin" id="lSI-wf-f2x"/>
+                    <constraint firstItem="I81-yq-gRm" firstAttribute="leading" secondItem="yZw-An-OaQ" secondAttribute="trailing" constant="12" id="otZ-cJ-XwY"/>
                     <constraint firstAttribute="bottom" secondItem="Hch-sx-Nfj" secondAttribute="bottom" id="wCt-ZY-eLR"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="IOl-MD-r8g" secondAttribute="bottom" constant="0.5" id="yki-nd-ae3"/>
+                    <constraint firstItem="yZw-An-OaQ" firstAttribute="leading" secondItem="IOl-MD-r8g" secondAttribute="trailing" constant="12.5" id="xyu-VR-Ltn"/>
+                    <constraint firstItem="I81-yq-gRm" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="6" id="yOb-FO-2ik"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

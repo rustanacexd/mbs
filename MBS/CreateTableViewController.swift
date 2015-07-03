@@ -101,7 +101,6 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             
             ad.saveAd()
         }
-        
     }
     
     private func validateFields() -> Bool {
@@ -282,7 +281,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     
     func navigationController(navigationController: UINavigationController,
         willShowViewController viewController: UIViewController, animated: Bool) {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
     }
     
     override func childViewControllerForStatusBarHidden() -> UIViewController? {
