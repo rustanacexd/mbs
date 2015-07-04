@@ -15,7 +15,11 @@ import DateTools
 class GlobalListViewController: UITableViewController, DZNSegmentedControlDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var advertisements:[Advertisement] = []
+    var advertisements:[Advertisement] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     var segmentedControl: DZNSegmentedControl!
     
     override func viewDidLoad() {
@@ -43,7 +47,6 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         fetchAds { (ads: [Advertisement]) -> () in
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
-            self.tableView.reloadData()
         }
         
         
@@ -72,7 +75,6 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
                 fetchAds { (ads: [Advertisement]) -> () in
                     self.advertisements = ads
                     self.selectedSegment(self.segmentedControl)
-                    self.tableView.reloadData()
                 }
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.tableView.stopPullToRefresh()
@@ -85,7 +87,6 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     func selectedSegment(control: DZNSegmentedControl) {
 
         switch control.selectedSegmentIndex {
-            
         case 1:
             advertisements.sort {$0.price < $1.price}
         case 2:
@@ -93,8 +94,6 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         default:
             advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending}
         }
-        
-        tableView.reloadData()
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
