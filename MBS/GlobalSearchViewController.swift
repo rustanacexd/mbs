@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class GlobalSearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var searchController: UISearchController!
-    var advertisements:[Advertisement] = []
+    
+    var advertisements:[Advertisement] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     var filteredAdvertisements:[Advertisement] = []
     
     @IBOutlet weak var menuBar: UIBarButtonItem!
@@ -24,6 +31,18 @@ class GlobalSearchViewController: UITableViewController, UISearchResultsUpdating
             menuBar.action = "revealToggle:"
             
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        //Initial Fetch
+        
+        //Initial Fetch
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "loading"
+        hud.detailsLabelText = "fetching ads"
+        
+        fetchAdsBy { (ads: [Advertisement]) -> () in
+            self.advertisements = ads
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
         
         searchController = UISearchController(searchResultsController: nil)
@@ -40,8 +59,6 @@ class GlobalSearchViewController: UITableViewController, UISearchResultsUpdating
         tableView.tableFooterView = UIView()
     }
     
-    
-    
     // MARK: - Table view data source
     
     
@@ -49,13 +66,6 @@ class GlobalSearchViewController: UITableViewController, UISearchResultsUpdating
         return searchController.active ? filteredAdvertisements.count : advertisements.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
-        
-        let advertisement = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
-        cell.textLabel?.text = advertisement.title
-        return cell
-    }
     
     // MARK: - UISearchResultsUpdating
     
@@ -113,6 +123,33 @@ class GlobalSearchViewController: UITableViewController, UISearchResultsUpdating
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         tableView.scrollRectToVisible(searchController.searchBar.frame, animated: false)
         return nil
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
+        
+        if cell.respondsToSelector("separatorInset:") {
+            cell.separatorInset = UIEdgeInsetsZero
+        }
+        
+        // Prevent the cell from inheriting the Table View's margin settings
+        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
+            cell.preservesSuperviewLayoutMargins = false
+        }
+        
+        if cell.respondsToSelector("setLayoutMargins:") {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
+        
+        let ad = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
+        cell.titleLabel.text = ad.title
+        cell.priceLabel.text = "\(ad.price) PHP"
+        cell.adImage.file = ad.image
+        cell.adImage.loadInBackground()
+        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.sellerUsername
+        
+        return cell
     }
     
 }
