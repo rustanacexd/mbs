@@ -130,6 +130,9 @@ func fetchAdsBy (key: String? = nil, equalTo: String? = nil, callback: ([Adverti
 
 
 
+
+
+
 //func fetchAds() -> [Advertisement] {
 //    var ads = [Advertisement]()
 //    let query = PFQuery(className: "Advertisement")

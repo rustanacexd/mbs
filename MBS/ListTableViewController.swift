@@ -11,37 +11,16 @@ import Parse
 import DZNSegmentedControl
 import MBProgressHUD
 
-class ListTableViewController: UITableViewController, DZNSegmentedControlDelegate {
+class ListTableViewController: AdsTableViewController {
     
-    var advertisements:[Advertisement] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-    var segmentedControl: DZNSegmentedControl!
     var selectedCategory: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        //Setup Segmented Control
-        segmentedControl = DZNSegmentedControl(items: ["Recent","Popular","Most Viewed"])
-        segmentedControl.delegate = self
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self, action: "selectedSegment:", forControlEvents: UIControlEvents.ValueChanged)
-        segmentedControl.bouncySelectionIndicator = true
-        segmentedControl.height = 40
-        segmentedControl.showsCount = false
-        segmentedControl.autoAdjustSelectionIndicatorWidth = false
-        segmentedControl.tintColor = UIColor.facebookBlue()
-        segmentedControl.font = UIFont(name: "Avenir", size: 14)
-        tableView.tableHeaderView = segmentedControl
         
         definesPresentationContext = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
-        tableView.tableFooterView = UIView()
         
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
@@ -82,45 +61,5 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
             }
         }
     }
-    
-    //MARK: - SegmentedControl
-    
-    func selectedSegment(control: DZNSegmentedControl) {
-        switch control.selectedSegmentIndex {
-        case 1:
-            advertisements.sort {$0.price < $1.price}
-        case 2:
-            advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
-        default:
-            advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending}
-        }
-    }
-    
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return UIBarPosition.Bottom
-    }
-    
-
-    // MARK: - Table view data source
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return advertisements.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
-        
-        let ad = advertisements[indexPath.row]
-        cell.titleLabel.text = ad.title
-        cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage.image = UIImage(named: "sample-category")
-        cell.adImage.file = ad.image
-        cell.adImage.loadInBackground()
-        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
-        cell.sellerLabel.text = ad.sellerUsername
-        
-        return cell
-    }
-    
-    
+ 
 }
