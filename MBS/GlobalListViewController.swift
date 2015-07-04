@@ -20,9 +20,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+  
         //Setup Reveal Menu
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -35,13 +33,13 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         hud.labelText = "loading"
         hud.detailsLabelText = "fetching ads"
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-//            dispatch_async(dispatch_get_main_queue(), {
-//                MBProgressHUD.hideHUDForView(self.view, animated: true)
-//                self.tableView.reloadData()
-//            })
-//        })
-//        
+        //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+        //            dispatch_async(dispatch_get_main_queue(), {
+        //                MBProgressHUD.hideHUDForView(self.view, animated: true)
+        //                self.tableView.reloadData()
+        //            })
+        //        })
+        //
         fetchAds { (ads: [Advertisement]) -> () in
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -73,6 +71,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
             NSOperationQueue().addOperationWithBlock {
                 fetchAds { (ads: [Advertisement]) -> () in
                     self.advertisements = ads
+                    self.selectedSegment(self.segmentedControl)
                     self.tableView.reloadData()
                 }
                 NSOperationQueue.mainQueue().addOperationWithBlock {
@@ -82,14 +81,11 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
             }, withAnimator: PacmanAnimator())
         
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
- 
+
     func selectedSegment(control: DZNSegmentedControl) {
-        
+
         switch control.selectedSegmentIndex {
+            
         case 1:
             advertisements.sort {$0.price < $1.price}
         case 2:
