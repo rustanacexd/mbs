@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
 
     var searchController: UISearchController!
     
@@ -23,10 +23,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.tintColor = UIColor.blackColor()
+        searchController.searchBar.tintColor = UIColor.facebookBlue()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
@@ -37,6 +36,8 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         tableView.tableFooterView = UIView()
+        searchController.delegate = self
+
     }
     
     // MARK: - Table view data source
@@ -44,6 +45,33 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchController.active ? filteredAdvertisements.count : advertisements.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
+        
+        if cell.respondsToSelector("separatorInset:") {
+            cell.separatorInset = UIEdgeInsetsZero
+        }
+        
+        // Prevent the cell from inheriting the Table View's margin settings
+        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
+            cell.preservesSuperviewLayoutMargins = false
+        }
+        
+        if cell.respondsToSelector("setLayoutMargins:") {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
+        
+        let ad = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
+        cell.titleLabel.text = ad.title
+        cell.priceLabel.text = "\(ad.price) PHP"
+        cell.adImage.file = ad.image
+        cell.adImage.loadInBackground()
+        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.sellerUsername
+        
+        return cell
     }
     
     
@@ -104,32 +132,16 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         tableView.scrollRectToVisible(searchController.searchBar.frame, animated: false)
         return nil
     }
+
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
-        
-        if cell.respondsToSelector("separatorInset:") {
-            cell.separatorInset = UIEdgeInsetsZero
-        }
-        
-        // Prevent the cell from inheriting the Table View's margin settings
-        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
-            cell.preservesSuperviewLayoutMargins = false
-        }
-        
-        if cell.respondsToSelector("setLayoutMargins:") {
-            cell.layoutMargins = UIEdgeInsetsZero
-        }
-        
-        let ad = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
-        cell.titleLabel.text = ad.title
-        cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage.file = ad.image
-        cell.adImage.loadInBackground()
-        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
-        cell.sellerLabel.text = ad.sellerUsername
-        
-        return cell
+    func willPresentSearchController(searchController: UISearchController) {
+        self.navigationController?.navigationBar.translucent = true
     }
+    
+    func willDismissSearchController(searchController: UISearchController) {
+        self.navigationController?.navigationBar.translucent = false
+    }
+    
+    
 
 }
