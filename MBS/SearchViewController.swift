@@ -35,8 +35,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         definesPresentationContext = true
         
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
-        tableView.tableFooterView = UIView()
+        tableView.scrollsToTop = true
         searchController.delegate = self
+        
 
     }
     
@@ -133,6 +134,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         return nil
     }
 
+    // MARK: - UISearchControllerDelegate
     
     func willPresentSearchController(searchController: UISearchController) {
         self.navigationController?.navigationBar.translucent = true
@@ -143,5 +145,4 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     
-
 }

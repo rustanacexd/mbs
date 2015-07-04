@@ -41,8 +41,7 @@ class GlobalListViewController: AdsTableViewController {
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
-        
-        
+       
         
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
@@ -58,7 +57,4 @@ class GlobalListViewController: AdsTableViewController {
             }, withAnimator: PacmanAnimator())
         
     }
-
-  
-    
 }

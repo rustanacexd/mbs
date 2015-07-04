@@ -35,13 +35,11 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         segmentedControl.font = UIFont(name: "Avenir", size: 14)
         tableView.tableHeaderView = segmentedControl
         
-        
         //Register Custom Cell from xib
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         
-        //Do not show empty rows
-        tableView.tableFooterView = UIView()
-        
+        //scroll to top
+        tableView.scrollsToTop = true
     }
     
     func selectedSegment(control: DZNSegmentedControl) {

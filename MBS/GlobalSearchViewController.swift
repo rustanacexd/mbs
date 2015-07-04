@@ -32,10 +32,6 @@ class GlobalSearchViewController: SearchViewController {
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
-        
-        
- 
     }
-    
     
 }
