@@ -21,11 +21,10 @@ class ListTableViewController: AdsTableViewController {
         definesPresentationContext = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
-        
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
-                fetchAdsBy { (ads: [Advertisement]) -> () in
+                fetchAdsBy (key: "category", equalTo: self.selectedCategory){ (ads: [Advertisement]) -> () in
                     self.advertisements = ads
                     self.selectedSegment(self.segmentedControl)
                 }
