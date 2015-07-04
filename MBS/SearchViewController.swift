@@ -1,31 +1,32 @@
 //
-//  SearchTableViewController.swift
+//  SearchViewController.swift
 //  MBS
 //
-//  Created by Rustan Corpuz on 6/27/15.
+//  Created by Rustan Corpuz on 7/4/15.
 //  Copyright (c) 2015 RightClick. All rights reserved.
 //
 
 import UIKit
+import MBProgressHUD
 
-class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
-    
+class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+
     var searchController: UISearchController!
-    var advertisements:[Advertisement] = []
+    
+    var advertisements:[Advertisement] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     var filteredAdvertisements:[Advertisement] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if self.revealViewController() != nil {
-//            menuBar = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain,
-//                target: self.revealViewController(), action: "revealToggle:")
-//            
-//            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-//        }
+
         
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.tintColor = UIColor.facebookBlue()
+        searchController.searchBar.tintColor = UIColor.blackColor()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
@@ -36,10 +37,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         tableView.tableFooterView = UIView()
-        
     }
-
-
     
     // MARK: - Table view data source
     
@@ -48,13 +46,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         return searchController.active ? filteredAdvertisements.count : advertisements.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
-        
-        let advertisement = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
-//        cell.textLabel?.text = advertisement.title
-        return cell
-    }
     
     // MARK: - UISearchResultsUpdating
     
@@ -89,7 +80,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             }
             
             for searchTerms in searchItems {
-                
                 searchMatch = searchString.rangeOfString(searchTerms as! String,
                     options: NSStringCompareOptions.CaseInsensitiveSearch)
                 
@@ -115,5 +105,31 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         return nil
     }
     
-    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
+        
+        if cell.respondsToSelector("separatorInset:") {
+            cell.separatorInset = UIEdgeInsetsZero
+        }
+        
+        // Prevent the cell from inheriting the Table View's margin settings
+        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
+            cell.preservesSuperviewLayoutMargins = false
+        }
+        
+        if cell.respondsToSelector("setLayoutMargins:") {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
+        
+        let ad = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
+        cell.titleLabel.text = ad.title
+        cell.priceLabel.text = "\(ad.price) PHP"
+        cell.adImage.file = ad.image
+        cell.adImage.loadInBackground()
+        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.sellerUsername
+        
+        return cell
+    }
+
 }

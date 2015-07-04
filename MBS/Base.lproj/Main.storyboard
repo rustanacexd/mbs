@@ -42,9 +42,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Ght-DZ-Eke">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="djQ-zC-zGR"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ptB-rK-laJ">
+                        <barButtonItem key="rightBarButtonItem" image="search" id="Li0-gA-FOk" userLabel="Search">
                             <connections>
-                                <segue destination="OBY-IG-Qvo" kind="modal" id="SCV-ep-jEe"/>
+                                <segue destination="e28-wR-RZS" kind="push" id="wwE-0x-RSW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -319,7 +319,7 @@
         <!--Search-->
         <scene sceneID="Kd9-sh-hWs">
             <objects>
-                <tableViewController id="teX-1a-GY4" customClass="SearchTableViewController" customModule="MBS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="teX-1a-GY4" customClass="SearchViewController" customModule="MBS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="0lL-uV-e94">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -586,7 +586,7 @@
             </objects>
             <point key="canvasLocation" x="552" y="844"/>
         </scene>
-        <!--Global Search View Controller-->
+        <!--Search-->
         <scene sceneID="bwb-ML-K2c">
             <objects>
                 <tableViewController id="e28-wR-RZS" customClass="GlobalSearchViewController" customModule="MBS" customModuleProvider="target" sceneMemberID="viewController">
@@ -599,7 +599,7 @@
                             <outlet property="delegate" destination="e28-wR-RZS" id="8KK-k5-mdF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="x6L-nb-i6A">
+                    <navigationItem key="navigationItem" title="Search" id="x6L-nb-i6A">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="fnW-nS-y0g"/>
                     </navigationItem>
                     <connections>
@@ -682,6 +682,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="flC-TL-EhG"/>
         <segue reference="BbZ-6G-gl4"/>
+        <segue reference="wwE-0x-RSW"/>
         <segue reference="Uwd-rL-3X5"/>
     </inferredMetricsTieBreakers>
 </document>

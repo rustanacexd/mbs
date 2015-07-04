@@ -55,7 +55,7 @@ class ListTableViewController: AdsTableViewController {
         // Pass the selected object to the new view controller.
         if let identifier = segue.identifier {
             if identifier == "searchSegue" {
-                let destinationVC = segue.destinationViewController as! SearchTableViewController
+                let destinationVC = segue.destinationViewController as! SearchViewController
                 destinationVC.advertisements = self.advertisements
             }
         }
