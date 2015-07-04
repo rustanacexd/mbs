@@ -85,7 +85,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage.image = UIImage(named: "sample-category")
+//        cell.adImage.image = UIImage(named: "sample-category")
         cell.adImage.file = ad.image
         cell.adImage.loadInBackground()
         cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()

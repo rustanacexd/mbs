@@ -2,17 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "sign in fb@2x.png"
+      "filename" : "image-placeholder@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "sign in fb@3x.png"
+      "filename" : "image-placeholder@3x.png"
     }
   ],
   "info" : {
