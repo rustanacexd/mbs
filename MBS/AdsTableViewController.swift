@@ -8,7 +8,6 @@
 
 import UIKit
 import DZNSegmentedControl
-import MBProgressHUD
 import DateTools
 
 class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate {
@@ -18,7 +17,6 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
             self.tableView.reloadData()
         }
     }
-    
     
     var segmentedControl: DZNSegmentedControl!
 
@@ -44,10 +42,6 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         //Do not show empty rows
         tableView.tableFooterView = UIView()
         
-        //Initial Fetch
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "loading"
-        hud.detailsLabelText = "fetching ads"
     }
     
     func selectedSegment(control: DZNSegmentedControl) {

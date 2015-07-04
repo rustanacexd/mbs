@@ -31,11 +31,18 @@ class GlobalListViewController: AdsTableViewController {
         //                self.tableView.reloadData()
         //            })
         //        })
-        //
+        
+        //Initial Fetch
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "loading"
+        hud.detailsLabelText = "fetching ads"
+
         fetchAdsBy { (ads: [Advertisement]) -> () in
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
+        
+        
         
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
