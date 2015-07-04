@@ -77,7 +77,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             searchItems = searchText.componentsSeparatedByString(" ")
         }
         
-        
         filteredAdvertisements = advertisements.filter({ ( advertisement: Advertisement) -> Bool in
             var nameMatch = false
             var searchString = ""

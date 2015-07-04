@@ -44,7 +44,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         //            })
         //        })
         //
-        fetchAds { (ads: [Advertisement]) -> () in
+        fetchAdsBy { (ads: [Advertisement]) -> () in
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
@@ -72,7 +72,7 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
-                fetchAds { (ads: [Advertisement]) -> () in
+                fetchAdsBy { (ads: [Advertisement]) -> () in
                     self.advertisements = ads
                     self.selectedSegment(self.segmentedControl)
                 }

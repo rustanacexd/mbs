@@ -106,9 +106,16 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
 }
 
 
-func fetchAds (callback: ([Advertisement]) -> ()) {
+func fetchAdsBy (key: String? = nil, equalTo: String? = nil, callback: ([Advertisement]) -> ()) {
     let query = PFQuery(className: "Advertisement")
     query.cachePolicy = PFCachePolicy.CacheThenNetwork
+    
+    if let k = key {
+        if let e = equalTo {
+            query.whereKey(k, equalTo: e)
+        }
+    }
+    
     query.findObjectsInBackgroundWithBlock {
         objects, error in
         
@@ -119,8 +126,9 @@ func fetchAds (callback: ([Advertisement]) -> ()) {
             }
         }
     }
-
 }
+
+
 
 //func fetchAds() -> [Advertisement] {
 //    var ads = [Advertisement]()

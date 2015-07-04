@@ -13,21 +13,18 @@ import MBProgressHUD
 
 class ListTableViewController: UITableViewController, DZNSegmentedControlDelegate {
     
-    var advertisements:[Advertisement] = []
+    var advertisements:[Advertisement] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     var segmentedControl: DZNSegmentedControl!
     var selectedCategory: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            dispatch_async(dispatch_get_main_queue(), {
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-            })
-        })
- 
+     
+        //Setup Segmented Control
         segmentedControl = DZNSegmentedControl(items: ["Recent","Popular","Most Viewed"])
         segmentedControl.delegate = self
         segmentedControl.selectedSegmentIndex = 0
@@ -45,10 +42,33 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
         
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         tableView.tableFooterView = UIView()
+        
+        //Pull to refresh
+        tableView.addPullToRefreshWithAction({
+            NSOperationQueue().addOperationWithBlock {
+                fetchAdsBy { (ads: [Advertisement]) -> () in
+                    self.advertisements = ads
+                    self.selectedSegment(self.segmentedControl)
+                }
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.tableView.stopPullToRefresh()
+                }
+            }
+            }, withAnimator: PacmanAnimator())
 
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        //Inital Fetch
+        fetchAdsBy (key: "category", equalTo: selectedCategory) { (ads: [Advertisement]) -> () in
+            self.advertisements = ads
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        }
+    }
     
     // MARK: - Navigation
     
@@ -62,12 +82,18 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
             }
         }
     }
-
     
     //MARK: - SegmentedControl
     
     func selectedSegment(control: DZNSegmentedControl) {
-        tableView.reloadData()
+        switch control.selectedSegmentIndex {
+        case 1:
+            advertisements.sort {$0.price < $1.price}
+        case 2:
+            advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
+        default:
+            advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending}
+        }
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
@@ -81,14 +107,18 @@ class ListTableViewController: UITableViewController, DZNSegmentedControlDelegat
         return advertisements.count
     }
     
-    
-    
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
         
-        let advertisement = advertisements[indexPath.row]
-//        cell.textLabel?.text = advertisement.title
+        let ad = advertisements[indexPath.row]
+        cell.titleLabel.text = ad.title
+        cell.priceLabel.text = "\(ad.price) PHP"
+        cell.adImage.image = UIImage(named: "sample-category")
+        cell.adImage.file = ad.image
+        cell.adImage.loadInBackground()
+        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.sellerUsername
+        
         return cell
     }
     
