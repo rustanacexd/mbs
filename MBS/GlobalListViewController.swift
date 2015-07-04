@@ -21,6 +21,8 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         //Setup Reveal Menu
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -33,13 +35,19 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         hud.labelText = "loading"
         hud.detailsLabelText = "fetching ads"
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
-            self.advertisements = fetchAds()
-            dispatch_async(dispatch_get_main_queue(), {
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                self.tableView.reloadData()
-            })
-        })
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+//            dispatch_async(dispatch_get_main_queue(), {
+//                MBProgressHUD.hideHUDForView(self.view, animated: true)
+//                self.tableView.reloadData()
+//            })
+//        })
+//        
+        fetchAds { (ads: [Advertisement]) -> () in
+            self.advertisements = ads
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            self.tableView.reloadData()
+        }
+        
         
         //Setup Segmented Control
         segmentedControl = DZNSegmentedControl(items: ["Recent","Cheapest","Alphabetically"])
@@ -63,6 +71,10 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
             NSOperationQueue().addOperationWithBlock {
+                fetchAds { (ads: [Advertisement]) -> () in
+                    self.advertisements = ads
+                    self.tableView.reloadData()
+                }
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.tableView.stopPullToRefresh()
                 }
@@ -72,10 +84,9 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
     }
-    
-    
+ 
     func selectedSegment(control: DZNSegmentedControl) {
         
         switch control.selectedSegmentIndex {
@@ -115,7 +126,6 @@ class GlobalListViewController: UITableViewController, DZNSegmentedControlDelega
         if cell.respondsToSelector("setLayoutMargins:") {
             cell.layoutMargins = UIEdgeInsetsZero
         }
-        
         
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title

@@ -106,17 +106,42 @@ func pfObjectToAd(object: PFObject) -> Advertisement {
 }
 
 
-func fetchAds() -> [Advertisement] {
-    var ads = [Advertisement]()
+func fetchAds (callback: ([Advertisement]) -> ()) {
     let query = PFQuery(className: "Advertisement")
-    var objects = query.findObjects()
-    
-    if let unwrappedObjects = objects {
-        ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+    query.cachePolicy = PFCachePolicy.CacheThenNetwork
+    query.findObjectsInBackgroundWithBlock {
+        objects, error in
+        
+        if error == nil {
+            if let pfObjects = objects as? [PFObject]{
+                let ads = map(pfObjects, {pfObjectToAd ($0)})
+                callback(ads)
+            }
+        }
     }
-    
-    return ads
+
 }
+
+//func fetchAds() -> [Advertisement] {
+//    var ads = [Advertisement]()
+//    let query = PFQuery(className: "Advertisement")
+//    query.cachePolicy = PFCachePolicy.CacheThenNetwork
+//    query.findObjectsInBackgroundWithBlock {
+//        objects, error in
+//        
+//        if error == nil {
+//            if let pfObjects = objects as? [PFObject]{
+//                ads = map(pfObjects, {pfObjectToAd ($0)})
+//            }
+//        }
+//    }
+//    
+//    //    if let unwrappedObjects = objects {
+//    //        ads = map(objects!, {pfObjectToAd($0 as! PFObject)})
+//    //    }
+//    
+//    return ads
+//}
 
 //func fetchAds(parameter: String? = nil) -> [Advertisement] {
 //
