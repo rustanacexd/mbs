@@ -19,7 +19,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     @IBOutlet weak var imageView: UIImageView!
     
     var condition: String?
-    var category: String!
+    var category: String = ""
     
     let categories = ["Gadgets", "Vehicles" ,"Real Estate", "Jobs", "Applicanes","Others"]
     let conditions = ["Brand New", "Slightly Used", "Second Hand", "Old"]

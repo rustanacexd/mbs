@@ -50,6 +50,7 @@ class GlobalListViewController: AdsTableViewController {
                     self.advertisements = ads
                     self.selectedSegment(self.segmentedControl)
                 }
+                
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.tableView.stopPullToRefresh()
                 }

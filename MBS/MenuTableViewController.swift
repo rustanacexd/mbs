@@ -25,7 +25,6 @@ class MenuTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         
-        
         self.revealViewController().rearViewRevealWidth = tableView.frame.size.width * 0.8
         self.revealViewController().frontViewShadowOpacity = 0
         menuBar = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain,
