@@ -55,7 +55,7 @@ func fetchAdsBy (key: String? = nil, equalTo: String? = nil, callback: ([Adverti
 
         if error == nil {
             if let pfObjects = objects as? [PFObject]{
-                let ads = map(pfObjects, {pfObjectToAd ($0)})
+                let ads = map(pfObjects, {$0 as! Advertisement})
                 callback(ads)
             }
         }
@@ -66,11 +66,6 @@ class User: PFUser, PFSubclassing {
     @NSManaged var contactNumber: String
     @NSManaged var facebookID: String
 }
-
-func pfObjectToAd(object: PFObject) -> Advertisement {
-    return (object as? Advertisement)!
-}
-
 
 func currentUser() -> User? {
     if let user = PFUser.currentUser() {
