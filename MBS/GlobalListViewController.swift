@@ -24,24 +24,12 @@ class GlobalListViewController: AdsTableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        
         //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
         //            dispatch_async(dispatch_get_main_queue(), {
         //                MBProgressHUD.hideHUDForView(self.view, animated: true)
         //                self.tableView.reloadData()
         //            })
         //        })
-        
-        //Initial Fetch
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "loading"
-        hud.detailsLabelText = "fetching ads"
-
-        fetchAdsBy { (ads: [Advertisement]) -> () in
-            self.advertisements = ads
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        }
-       
         
         //Pull to refresh
         tableView.addPullToRefreshWithAction({
@@ -57,5 +45,19 @@ class GlobalListViewController: AdsTableViewController {
             }
             }, withAnimator: PacmanAnimator())
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Initial Fetch
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "loading"
+        hud.detailsLabelText = "fetching ads"
+        
+        fetchAdsBy { (ads: [Advertisement]) -> () in
+            self.advertisements = ads
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        }
     }
 }

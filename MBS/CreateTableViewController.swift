@@ -98,7 +98,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         }
     }
     
-    func submitAd() {        
+    func submitAd() {
         if validateFields() {
             let ad = Advertisement(className: Advertisement.parseClassName())
             ad.image = PFFile(data: UIImageJPEGRepresentation(imageView.image, 0.1), contentType: ".jpg")
