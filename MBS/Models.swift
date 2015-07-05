@@ -49,6 +49,7 @@ class Advertisement: PFObject, PFSubclassing {
 
 func fetchAdsBy (key: String? = nil, equalTo: String? = nil, callback: ([Advertisement]) -> ()) {
     let query = PFQuery(className: "Advertisement")
+    query.orderByDescending("createdAt")
     query.cachePolicy = PFCachePolicy.CacheThenNetwork
 
     if let k = key {

@@ -51,7 +51,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         case 2:
             advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
         default:
-            advertisements.sort {$0.createdAt!.compare($1.createdAt!) == NSComparisonResult.OrderedAscending}
+            advertisements.sort {$0.createdAt!.compare($1.createdAt!) == NSComparisonResult.OrderedDescending}
         }
     }
     
