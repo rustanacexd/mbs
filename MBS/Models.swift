@@ -32,14 +32,6 @@ class Advertisement: PFObject, PFSubclassing {
         self.seller = currentUser()!
         self.displayName = currentUser()!.username!
     }
-    
-    func imageView() -> UIImage {
-        let view = PFImageView(image: UIImage(named: "image-placeholder"))
-        view.file = image
-        view.loadInBackground()
-        return view.image!
-    }
-    
 
     static func parseClassName() -> String {
         return "Advertisement"

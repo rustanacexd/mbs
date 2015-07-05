@@ -9,7 +9,7 @@
 import UIKit
 import DZNSegmentedControl
 import DateTools
-
+import ParseUI
 
 class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate {
     
@@ -18,6 +18,9 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
             self.tableView.reloadData()
         }
     }
+    
+    let adImage = PFImageView(image: UIImage(named: "image-placeholder"))
+
     
     var segmentedControl: DZNSegmentedControl!
 
@@ -84,7 +87,14 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage.image = ad.imageView()
+        
+        adImage.file = ad.image
+        adImage.loadInBackground { (image: UIImage?, error: NSError?) -> Void in
+            if error == nil {
+                cell.adImage.image = image
+            }
+        }
+
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
         

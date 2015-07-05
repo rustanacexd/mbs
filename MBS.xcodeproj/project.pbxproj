@@ -223,12 +223,12 @@
 				94BFE4D61B3D3EAC00C80481 /* Views */,
 				94D7A4491B3CEC5500BA6A4C /* Controllers */,
 				94EDB5FE1B3A3F0100312D88 /* AppDelegate.swift */,
+				94BFE4DB1B3D4BC600C80481 /* Models.swift */,
 				94EDB6021B3A3F0100312D88 /* Main.storyboard */,
 				94EDB6051B3A3F0100312D88 /* Images.xcassets */,
 				94EDB5FC1B3A3F0100312D88 /* Supporting Files */,
 				94439D111B3C0C8700A72D3E /* Extensions+Helpers.swift */,
 				94311F8F1B3C15DC00367DC5 /* MBS-Bridging-Header.h */,
-				94BFE4DB1B3D4BC600C80481 /* Models.swift */,
 			);
 			path = MBS;
 			sourceTree = "<group>";
