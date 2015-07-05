@@ -79,7 +79,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         }
         
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
-        cell.sellerLabel.text = ad.seller.username
+        cell.sellerLabel.text = ad.displayName
         
         return cell
     }
