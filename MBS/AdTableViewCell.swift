@@ -21,14 +21,31 @@ class AdTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
+ 
         titleLabel.sizeThatFits(titleLabel.frame.size)
+        
+        var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        var blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.frame = CGRect(x: 0, y: contentView.frame.height - 40,
+            width: contentView.frame.width, height: 40)
+        
+        contentView.insertSubview(blurEffectView, aboveSubview: adImage)
+        
+        if self.respondsToSelector("separatorInset:") {
+            self.separatorInset = UIEdgeInsetsZero
+        }
+        
+        // Prevent the cell from inheriting the Table View's margin settings
+        if self.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
+            self.preservesSuperviewLayoutMargins = false
+        }
+        
+        if self.respondsToSelector("setLayoutMargins:") {
+            self.layoutMargins = UIEdgeInsetsZero
+        }
+        
+        self.selectionStyle = .None
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
 }

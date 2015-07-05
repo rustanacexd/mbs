@@ -17,26 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOl-MD-r8g">
-                        <rect key="frame" x="8" y="159" width="27" height="12"/>
+                        <rect key="frame" x="8" y="161" width="27" height="12"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 hours ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZw-An-OaQ">
-                        <rect key="frame" x="47" y="159" width="56" height="12"/>
+                        <rect key="frame" x="47" y="161" width="56" height="12"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000.00 PHP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I81-yq-gRm">
-                        <rect key="frame" x="115" y="159" width="61" height="12"/>
+                        <rect key="frame" x="115" y="161" width="61" height="12"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, reiciendis." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-wt-qVy">
-                        <rect key="frame" x="8" y="124" width="239" height="33"/>
-                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                        <rect key="frame" x="8" y="128.5" width="284" height="30.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="11"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -49,14 +49,14 @@
                     <constraint firstAttribute="bottom" secondItem="Hch-sx-Nfj" secondAttribute="bottom" id="Ddp-Rl-jbg"/>
                     <constraint firstItem="yZw-An-OaQ" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="2" id="IMl-Fr-tcv"/>
                     <constraint firstItem="yZw-An-OaQ" firstAttribute="leading" secondItem="IOl-MD-r8g" secondAttribute="trailing" constant="12" id="QVP-jb-6tY"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="I81-yq-gRm" secondAttribute="bottom" constant="0.5" id="S4M-Y8-8Ch"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="I81-yq-gRm" secondAttribute="bottom" constant="-1.5" id="S4M-Y8-8Ch"/>
                     <constraint firstItem="IOl-MD-r8g" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="2" id="TM7-qQ-1be"/>
                     <constraint firstItem="I81-yq-gRm" firstAttribute="leading" secondItem="yZw-An-OaQ" secondAttribute="trailing" constant="12" id="TN6-Hp-sD9"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Hjn-wt-qVy" secondAttribute="trailing" constant="65" id="bs0-or-bZe"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Hjn-wt-qVy" secondAttribute="trailing" constant="20" id="bs0-or-bZe"/>
                     <constraint firstItem="Hch-sx-Nfj" firstAttribute="top" secondItem="ZgI-3r-sJF" secondAttribute="top" id="eby-Py-D3z"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="yZw-An-OaQ" secondAttribute="bottom" constant="0.5" id="kws-vj-Pvz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yZw-An-OaQ" secondAttribute="bottom" constant="-1.5" id="kws-vj-Pvz"/>
                     <constraint firstItem="I81-yq-gRm" firstAttribute="top" secondItem="Hjn-wt-qVy" secondAttribute="bottom" constant="2" id="sKg-zw-H9C"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="IOl-MD-r8g" secondAttribute="bottom" constant="0.5" id="stH-P0-OmS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="IOl-MD-r8g" secondAttribute="bottom" constant="-1.5" id="stH-P0-OmS"/>
                     <constraint firstAttribute="trailing" secondItem="Hch-sx-Nfj" secondAttribute="trailing" id="uh4-qz-Kf0"/>
                 </constraints>
             </tableViewCellContentView>

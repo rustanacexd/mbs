@@ -40,6 +40,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         tableView.scrollsToTop = true
         searchController.delegate = self
+        tableView.separatorStyle = .None
         
 
     }
@@ -53,20 +54,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
-        
-        if cell.respondsToSelector("separatorInset:") {
-            cell.separatorInset = UIEdgeInsetsZero
-        }
-        
-        // Prevent the cell from inheriting the Table View's margin settings
-        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
-            cell.preservesSuperviewLayoutMargins = false
-        }
-        
-        if cell.respondsToSelector("setLayoutMargins:") {
-            cell.layoutMargins = UIEdgeInsetsZero
-        }
-        
+     
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"

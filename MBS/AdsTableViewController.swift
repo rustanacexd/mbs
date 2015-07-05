@@ -20,7 +20,6 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
     }
     
     let adImage = PFImageView(image: UIImage(named: "image-placeholder"))
-
     
     var segmentedControl: DZNSegmentedControl!
 
@@ -44,6 +43,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         
         //scroll to top
         tableView.scrollsToTop = true
+        
     }
     
     func selectedSegment(control: DZNSegmentedControl) {
@@ -71,19 +71,6 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("adCell", forIndexPath: indexPath) as! AdTableViewCell
         
-        if cell.respondsToSelector("separatorInset:") {
-            cell.separatorInset = UIEdgeInsetsZero
-        }
-        
-        // Prevent the cell from inheriting the Table View's margin settings
-        if cell.respondsToSelector("setPreservesSuperviewLayoutMargins:") {
-            cell.preservesSuperviewLayoutMargins = false
-        }
-        
-        if cell.respondsToSelector("setLayoutMargins:") {
-            cell.layoutMargins = UIEdgeInsetsZero
-        }
-        
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
@@ -97,6 +84,8 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
 
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
+        
+        
         
         return cell
     }

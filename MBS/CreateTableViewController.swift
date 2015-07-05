@@ -98,8 +98,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         }
     }
     
-    func submitAd() {
-        
+    func submitAd() {        
         if validateFields() {
             let ad = Advertisement(className: Advertisement.parseClassName())
             ad.image = PFFile(data: UIImageJPEGRepresentation(imageView.image, 0.1), contentType: ".jpg")
@@ -284,7 +283,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         let newLength = count(textView.text) + count(text) - range.length
         
-        return textView.tag == titleTextViewTag ? newLength <= 80 : newLength <= 320
+        return textView.tag == titleTextViewTag ? newLength <= 57 : newLength <= 320
     }
     
     override func prefersStatusBarHidden() -> Bool {
