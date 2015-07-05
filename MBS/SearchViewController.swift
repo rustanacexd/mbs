@@ -21,7 +21,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     let adImage = PFImageView(image: UIImage(named: "image-placeholder"))
-    
+    var adUIImage: UIImage!
     var filteredAdvertisements:[Advertisement] = []
     
     override func viewDidLoad() {
@@ -62,9 +62,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         adImage.file = ad.image
         adImage.loadInBackground { (image: UIImage?, error: NSError?) -> Void in
             if error == nil {
-                cell.adImage.image = image
+                self.adUIImage = image!
             }
         }
+        
+        cell.adImage.image = adUIImage
         
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName

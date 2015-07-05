@@ -20,6 +20,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
     }
     
     let adImage = PFImageView(image: UIImage(named: "image-placeholder"))
+    var adUIImage: UIImage!
     
     var segmentedControl: DZNSegmentedControl!
 
@@ -76,12 +77,14 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         cell.priceLabel.text = "\(ad.price) PHP"
         
         adImage.file = ad.image
+        
         adImage.loadInBackground { (image: UIImage?, error: NSError?) -> Void in
             if error == nil {
-                cell.adImage.image = image
+                self.adUIImage = image!
             }
         }
-
+        
+        cell.adImage.image = adUIImage
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
         
