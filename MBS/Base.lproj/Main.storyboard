@@ -68,22 +68,32 @@
                         <sections>
                             <tableViewSection id="ZSZ-hP-deD">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="wrC-FP-KHX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="wrC-FP-KHX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wrC-FP-KHX" id="yEe-g1-rmR">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5I3-O9-m6F" customClass="FBSDKProfilePictureView">
-                                                    <rect key="frame" x="13" y="17" width="50" height="50"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5I3-O9-m6F" customClass="FBSDKProfilePictureView">
+                                                    <rect key="frame" x="8" y="17" width="50" height="50"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Vxl-9g-0E7"/>
+                                                        <constraint firstAttribute="width" constant="50" id="z5A-qa-Cw6"/>
+                                                    </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rustan Corpuz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntj-3U-WlB">
-                                                    <rect key="frame" x="74" y="29" width="123" height="25"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rustan Corpuz" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntj-3U-WlB">
+                                                    <rect key="frame" x="69" y="18" width="106.5" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ntj-3U-WlB" firstAttribute="leading" secondItem="5I3-O9-m6F" secondAttribute="trailing" constant="11" id="A91-3B-QBo"/>
+                                                <constraint firstItem="Ntj-3U-WlB" firstAttribute="top" secondItem="yEe-g1-rmR" secondAttribute="topMargin" constant="10" id="MtO-xh-4Qr"/>
+                                                <constraint firstItem="5I3-O9-m6F" firstAttribute="leading" secondItem="yEe-g1-rmR" secondAttribute="leadingMargin" id="NmL-lT-2is"/>
+                                                <constraint firstItem="5I3-O9-m6F" firstAttribute="top" secondItem="yEe-g1-rmR" secondAttribute="topMargin" constant="9" id="yff-mk-8CZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="EP9-I8-neK" style="IBUITableViewCellStyleDefault" id="pS5-9g-2S8">
@@ -680,9 +690,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="BbZ-6G-gl4"/>
         <segue reference="flC-TL-EhG"/>
         <segue reference="wwE-0x-RSW"/>
-        <segue reference="Ehw-ea-dhv"/>
         <segue reference="Uwd-rL-3X5"/>
     </inferredMetricsTieBreakers>
 </document>
