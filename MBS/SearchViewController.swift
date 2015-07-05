@@ -67,7 +67,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage = ad.imageView()
+        cell.adImage.image = ad.imageView()
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.seller.username
         

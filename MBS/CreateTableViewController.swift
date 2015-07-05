@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import ActionSheetPicker_3_0
 
 class CreateTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -95,10 +96,8 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     func submitAd() {
         
         if validateFields() {
-//            let ad = Advertisement(imageData: UIImageJPEGRepresentation(imageView.image, 0.2),
-//                title: titleTextView.text, description: descriptionTextView.text,
-//                price: (priceTextField.text as NSString).doubleValue, category: category, condition: condition)
             let ad = Advertisement(className: Advertisement.parseClassName())
+            ad.image = PFFile(data: UIImageJPEGRepresentation(imageView.image, 0.1), contentType: ".jpg")
             ad.title = titleTextView.text
             ad.shortDescription = descriptionTextView.text
             ad.price = (priceTextField.text as NSString).doubleValue

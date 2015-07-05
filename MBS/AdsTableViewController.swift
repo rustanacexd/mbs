@@ -10,6 +10,7 @@ import UIKit
 import DZNSegmentedControl
 import DateTools
 
+
 class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate {
     
     var advertisements:[Advertisement] = [] {
@@ -50,7 +51,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         case 2:
             advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
         default:
-            advertisements.sort {$0.createdAt!.compare($1.createdAt!) == NSComparisonResult.OrderedDescending}
+            advertisements.sort {$0.createdAt!.compare($1.createdAt!) == NSComparisonResult.OrderedAscending}
         }
     }
     
@@ -83,12 +84,11 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage = ad.imageView()
+        cell.adImage.image = ad.imageView()
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
         
         return cell
     }
-
 
 }

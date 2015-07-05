@@ -33,11 +33,11 @@ class Advertisement: PFObject, PFSubclassing {
         self.displayName = currentUser()!.username!
     }
     
-    func imageView() -> UIImageView {
+    func imageView() -> UIImage {
         let view = PFImageView(image: UIImage(named: "image-placeholder"))
         view.file = image
         view.loadInBackground()
-        return view
+        return view.image!
     }
     
 
