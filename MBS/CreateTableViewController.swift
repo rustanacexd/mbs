@@ -18,6 +18,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var fbShareSwitch: UISwitch!
     
     var condition: String = ""
     var category: String = ""
@@ -66,6 +67,9 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         priceTextField.textColor = UIColor.facebookBlue()
         contactTextField.textColor = UIColor.facebookBlue()
+        fbShareSwitch.onTintColor = UIColor.facebookBlue()
+
+        
         
         let pricePlaceholder = NSAttributedString(string: "Price",
             attributes: [NSForegroundColorAttributeName:UIColor.lightBlue()])
@@ -75,6 +79,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         priceTextField.attributedPlaceholder = pricePlaceholder
         contactTextField.attributedPlaceholder  = contactPlaceholder
+
         
     }
     
@@ -218,11 +223,10 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.clipsToBounds = true
-        
+        imageView.alpha = 0.5
         dismissViewControllerAnimated(true, completion: nil)
     }
     
