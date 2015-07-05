@@ -30,7 +30,7 @@ class CategoriesViewController: UICollectionViewController{
         }
         
         (self.collectionViewLayout as! UICollectionViewFlowLayout).itemSize =
-            CGSize(width: self.view.frame.size.width * 0.45, height: 230)
+            CGSize(width: self.view.frame.size.width * 0.45, height: 190)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     
