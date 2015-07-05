@@ -18,7 +18,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
-    var condition: String?
+    var condition: String = ""
     var category: String = ""
     
     let categories = ["Gadgets", "Vehicles" ,"Real Estate", "Jobs", "Applicanes","Others"]
@@ -95,11 +95,20 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     func submitAd() {
         
         if validateFields() {
-            let ad = Advertisement(imageData: UIImageJPEGRepresentation(imageView.image, 0.2),
-                title: titleTextView.text, description: descriptionTextView.text,
-                price: (priceTextField.text as NSString).doubleValue, category: category, condition: condition)
-            
-            ad.saveAd()
+//            let ad = Advertisement(imageData: UIImageJPEGRepresentation(imageView.image, 0.2),
+//                title: titleTextView.text, description: descriptionTextView.text,
+//                price: (priceTextField.text as NSString).doubleValue, category: category, condition: condition)
+            let ad = Advertisement(className: Advertisement.parseClassName())
+            ad.title = titleTextView.text
+            ad.shortDescription = descriptionTextView.text
+            ad.price = (priceTextField.text as NSString).doubleValue
+            ad.category = category
+            ad.condition = condition
+            ad.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if error == nil {
+                    println("done")
+                }
+            })
         }
     }
     

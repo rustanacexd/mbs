@@ -30,10 +30,10 @@ class MenuTableViewController: UITableViewController {
         menuBar = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain,
             target: self.revealViewController(), action: "revealToggle:")
         
-        usernameLabel.text = CurrentUser.sharedInstance.username
+        usernameLabel.text = currentUser()?.username
         profilePicture.layer.cornerRadius = 25.0
         profilePicture.clipsToBounds = true
-        profilePicture.profileID = CurrentUser.sharedInstance.facebookID
+        profilePicture.profileID = currentUser()?.facebookID
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor.facebookBlue()
         

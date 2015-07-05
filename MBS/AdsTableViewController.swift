@@ -50,7 +50,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         case 2:
             advertisements.sort {$0.title.lowercaseString < $1.title.lowercaseString}
         default:
-            advertisements.sort {$0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending}
+            advertisements.sort {$0.createdAt!.compare($1.createdAt!) == NSComparisonResult.OrderedDescending}
         }
     }
     
@@ -83,10 +83,9 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage.file = ad.image
-        cell.adImage.loadInBackground()
-        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
-        cell.sellerLabel.text = ad.sellerUsername
+        cell.adImage = ad.imageView()
+        cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.displayName
         
         return cell
     }

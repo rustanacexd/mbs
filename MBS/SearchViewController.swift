@@ -64,13 +64,12 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
             cell.layoutMargins = UIEdgeInsetsZero
         }
         
-        let ad = searchController.active ? filteredAdvertisements[indexPath.row] : advertisements[indexPath.row]
+        let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        cell.adImage.file = ad.image
-        cell.adImage.loadInBackground()
-        cell.datePostedLabel.text = ad.createdAt.timeAgoSinceNow()
-        cell.sellerLabel.text = ad.sellerUsername
+        cell.adImage = ad.imageView()
+        cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
+        cell.sellerLabel.text = ad.seller.username
         
         return cell
     }
@@ -105,7 +104,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
                 searchString = advertisement.title
             }
             else if scope == 1 {
-                searchString = advertisement.description!
+                searchString = advertisement.shortDescription
             }
             
             for searchTerms in searchItems {

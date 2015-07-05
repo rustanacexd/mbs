@@ -12,7 +12,7 @@ import ParseUI
 class AdTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var adImage: PFImageView!
+    @IBOutlet weak var adImage: UIImageView!
     @IBOutlet weak var sellerLabel: UILabel!
     @IBOutlet weak var datePostedLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
