@@ -95,10 +95,10 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
             let ad = Advertisement(className: Advertisement.parseClassName())
             ad.image = PFFile(data: UIImageJPEGRepresentation(imageView.image, 0.1), contentType: ".jpg")
             ad.title = titleTextView.text
-            ad.shortDescription = descriptionTextView.text
             ad.price = (priceTextField.text as NSString).doubleValue
             ad.category = category
             ad.condition = condition
+            ad.shortDescription = descriptionTextView.text == descriptionTextViewPlaceholder ? "" : descriptionTextView.text
             ad.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
                 if error == nil {
                     println("done")
@@ -273,7 +273,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         let newLength = count(textView.text) + count(text) - range.length
         
-        return textView.tag == titleTextViewTag ? newLength <= 57 : newLength <= 320
+        return textView.tag == titleTextViewTag ? newLength <= 55 : newLength <= 320
     }
     
     override func prefersStatusBarHidden() -> Bool {

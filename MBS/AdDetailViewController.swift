@@ -15,15 +15,18 @@ class AdDetailViewController: UITableViewController {
     
     @IBOutlet weak var imageView: PFImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         titleLabel.text = advertisement.title
+        descriptionLabel.text = advertisement.shortDescription.isEmpty ? "No Description" : advertisement.shortDescription
         imageView.file = advertisement.image
         imageView.loadInBackground()
     }
@@ -52,10 +55,13 @@ class AdDetailViewController: UITableViewController {
             cell.backgroundColor = UIColor.lightBlue()
         }
         
+        
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.detailTextLabel?.textColor = UIColor.lightBlue()
         
     }
+    
+    
 
   
 }
