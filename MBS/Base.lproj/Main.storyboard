@@ -686,34 +686,34 @@
                         <sections>
                             <tableViewSection id="AWL-8F-bgx">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="263" id="R4O-32-mNX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="240" id="R4O-32-mNX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R4O-32-mNX" id="Uq7-aJ-qkx">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GUq-y6-VG0" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="262.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="239.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-jY-MJk">
-                                                    <rect key="frame" x="8" y="226" width="304" height="16.5"/>
+                                                    <rect key="frame" x="8" y="203" width="304" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-vf-un0">
-                                                    <rect key="frame" x="8" y="244" width="48.5" height="12"/>
+                                                    <rect key="frame" x="8" y="221" width="48.5" height="12"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hours ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E72-JV-FnL">
-                                                    <rect key="frame" x="64.5" y="244" width="56" height="12"/>
+                                                    <rect key="frame" x="64.5" y="221" width="56" height="12"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.00 PHP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5L-FZ-bnE">
-                                                    <rect key="frame" x="128.5" y="244" width="61" height="12"/>
+                                                    <rect key="frame" x="128.5" y="221" width="61" height="12"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -788,7 +788,7 @@
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Pick if applicable" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1JN-tj-9A6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Not Specified" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1JN-tj-9A6">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -824,6 +824,8 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="categoryLabel" destination="hdz-Eu-TsM" id="Ly3-ka-bCy"/>
+                        <outlet property="conditionLabel" destination="1JN-tj-9A6" id="SAf-px-J4H"/>
                         <outlet property="descriptionLabel" destination="mpB-dW-EYH" id="Rut-6B-Et2"/>
                         <outlet property="imageView" destination="GUq-y6-VG0" id="jIZ-g3-DZr"/>
                         <outlet property="priceLabel" destination="j5L-FZ-bnE" id="Cz9-0G-XLn"/>

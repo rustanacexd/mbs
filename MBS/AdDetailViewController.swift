@@ -21,6 +21,8 @@ class AdDetailViewController: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var conditionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,8 @@ class AdDetailViewController: UITableViewController {
         timeLabel.text = advertisement.createdAt!.timeAgoSinceNow()
         usernameLabel.text = advertisement.displayName
         priceLabel.text = "\(advertisement.price)"
+        categoryLabel.text = advertisement.category
+        conditionLabel.text = advertisement.condition.isEmpty ?  "Not Specified" : advertisement.condition
         imageView.file = advertisement.image
         imageView.loadInBackground()
         
