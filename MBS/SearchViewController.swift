@@ -34,15 +34,16 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         searchController.searchBar.delegate = self
         searchController.searchBar.scopeButtonTitles = ["Title", "Description"]
         searchController.searchBar.sizeToFit()
+        searchController.delegate = self
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
         
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
+        
         tableView.scrollsToTop = true
-        searchController.delegate = self
+        
         tableView.separatorStyle = .None
         
-
     }
     
     // MARK: - Table view data source
@@ -68,6 +69,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     //MARK: - UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let ad = advertisements[indexPath.row]
+        detailVC.advertisement = ad
         presentViewController(detailVC, animated: true, completion: nil)
         
     }

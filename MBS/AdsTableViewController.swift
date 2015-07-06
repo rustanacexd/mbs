@@ -84,16 +84,18 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         cell.adImage.loadInBackground()
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
-        
-        
-        
+   
         return cell
     }
     
     //MARK: - UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let ad = advertisements[indexPath.row]
-        presentViewController(detailVC, animated: true, completion: nil)
+        var ad = advertisements[indexPath.row]
+        
+        detailVC.advertisement = ad
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(self.detailVC, animated: true, completion: nil)
+        })
         
     }
     

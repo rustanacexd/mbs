@@ -45,12 +45,6 @@ class GlobalListViewController: AdsTableViewController {
             }
             }, withAnimator: PacmanAnimator())
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //Initial Fetch
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "loading"
         hud.detailsLabelText = "fetching ads"
@@ -59,5 +53,7 @@ class GlobalListViewController: AdsTableViewController {
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
+        
     }
+   
 }
