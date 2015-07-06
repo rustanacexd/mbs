@@ -64,10 +64,10 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         
         let pricePlaceholder = NSAttributedString(string: "Price",
-            attributes: [NSForegroundColorAttributeName:UIColor.lightBlue()])
+            attributes: [NSForegroundColorAttributeName:UIColor.facebookBlue()])
         
         let contactPlaceholder =  NSAttributedString(string: "Mobile Number",
-            attributes: [NSForegroundColorAttributeName:UIColor.lightBlue()])
+            attributes: [NSForegroundColorAttributeName:UIColor.facebookBlue()])
         
         priceTextField.attributedPlaceholder = pricePlaceholder
         contactTextField.attributedPlaceholder  = contactPlaceholder
@@ -168,7 +168,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.detailTextLabel?.textColor = UIColor.lightBlue()
+        cell.detailTextLabel?.textColor = UIColor.facebookBlue()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
