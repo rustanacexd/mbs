@@ -17,13 +17,8 @@ class MenuTableViewController: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var profilePicture: FBSDKProfilePictureView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
         
         self.revealViewController().rearViewRevealWidth = tableView.frame.size.width * 0.8
         self.revealViewController().frontViewShadowOpacity = 0

@@ -22,6 +22,8 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
     
     var segmentedControl: DZNSegmentedControl!
     
+    let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DetailView") as! AdDetailViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,8 +37,10 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         segmentedControl.autoAdjustSelectionIndicatorWidth = false
         segmentedControl.tintColor = UIColor.facebookBlue()
         segmentedControl.font = UIFont(name: "Avenir", size: 14)
-        tableView.tableHeaderView = segmentedControl
         
+        tableView.tableHeaderView = segmentedControl
+        tableView.separatorStyle = .None
+       
         //Register Custom Cell from xib
         tableView.registerNib(UINib(nibName: "AdTableCell", bundle: nil), forCellReuseIdentifier: "adCell")
         
@@ -62,6 +66,8 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
     }
     
     
+    //MARK: - UITableViewDataSource
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return advertisements.count
     }
@@ -82,6 +88,13 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         
         
         return cell
+    }
+    
+    //MARK: - UITableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let ad = advertisements[indexPath.row]
+        presentViewController(detailVC, animated: true, completion: nil)
+        
     }
     
 }

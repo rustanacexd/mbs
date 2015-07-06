@@ -19,6 +19,8 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
             self.tableView.reloadData()
         }
     }
+    
+    let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("DetailView") as! AdDetailViewController
  
     var filteredAdvertisements:[Advertisement] = []
     
@@ -45,7 +47,6 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     // MARK: - Table view data source
     
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchController.active ? filteredAdvertisements.count : advertisements.count
     }
@@ -62,6 +63,13 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         cell.sellerLabel.text = ad.displayName
         
         return cell
+    }
+    
+    //MARK: - UITableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let ad = advertisements[indexPath.row]
+        presentViewController(detailVC, animated: true, completion: nil)
+        
     }
     
     
