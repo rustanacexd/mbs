@@ -13,7 +13,6 @@ import ActionSheetPicker_3_0
 class CreateTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var contactTextField: UITextField!
@@ -35,13 +34,6 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-        
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
         
         let button = UIButton(frame: CGRect(x: view.frame.width - 55, y: 240, width: 50, height: 50))
         button.setImage(UIImage(named: "submit-add"), forState: UIControlState.Normal)
@@ -264,13 +256,11 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         if textView.text.isEmpty && textView.tag == titleTextViewTag {
             textView.text = titleTextViewPlaceholder
-            //            textView.textColor = UIColor.lightGrayColor()
             
         }
         
         if textView.text.isEmpty && textView.tag == descriptonTextViewTag {
             textView.text = descriptionTextViewPlaceholder
-            //            textView.textColor = UIColor.lightGrayColor()
         }
         
     }

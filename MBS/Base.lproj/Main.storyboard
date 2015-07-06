@@ -581,16 +581,11 @@
                             <outlet property="delegate" destination="OBY-IG-Qvo" id="GAY-6x-SP3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="7hf-mX-PCM">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="dhF-o8-Nfa"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fow-QB-KVN"/>
-                    </navigationItem>
                     <connections>
                         <outlet property="contactTextField" destination="wIM-n1-7zv" id="lQd-2b-doU"/>
                         <outlet property="descriptionTextView" destination="LKs-zp-hq3" id="Awh-tR-BE9"/>
                         <outlet property="fbShareSwitch" destination="esx-c7-N90" id="Ntg-a4-t2H"/>
                         <outlet property="imageView" destination="PKX-tE-YTZ" id="poC-L3-fyN"/>
-                        <outlet property="menuButton" destination="dhF-o8-Nfa" id="15d-KL-z8d"/>
                         <outlet property="priceTextField" destination="XZq-8A-Hmd" id="hzJ-VA-RZl"/>
                         <outlet property="titleTextView" destination="yzt-K5-Aeg" id="zfF-6Y-Jlo"/>
                     </connections>
