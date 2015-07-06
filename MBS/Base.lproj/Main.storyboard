@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="c5f-Ws-V2I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="k0f-z5-JBf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -592,7 +592,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eV9-UU-DCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="844"/>
+            <point key="canvasLocation" x="1084" y="844"/>
         </scene>
         <!--Search-->
         <scene sceneID="bwb-ML-K2c">
@@ -616,7 +616,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hB6-9O-pNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="844"/>
+            <point key="canvasLocation" x="1909" y="844"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nv5-hr-8TB">
@@ -672,7 +672,62 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3s-rh-BM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="844"/>
+            <point key="canvasLocation" x="1512" y="844"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="73j-Kf-wP6">
+            <objects>
+                <viewController id="k0f-z5-JBf" customClass="ProfileViewController" customModule="MBS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pbv-7j-DT7"/>
+                        <viewControllerLayoutGuide type="bottom" id="cwc-XN-Bsr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nu7-RN-LrF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="QAU-4G-yET" customClass="PFImageView">
+                                <rect key="frame" x="85" y="79" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="q2x-dk-cLX"/>
+                                    <constraint firstAttribute="height" constant="150" id="w5H-aE-eyS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rustan Corpuz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tak-uW-tG6">
+                                <rect key="frame" x="89" y="237" width="142.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purok Gugma, Pagadian City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTe-BN-vrL">
+                                <rect key="frame" x="83.5" y="264" width="153.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dea-ub-gTE">
+                                <rect key="frame" x="0.0" y="288" width="320" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QAU-4G-yET" firstAttribute="top" secondItem="pbv-7j-DT7" secondAttribute="bottom" constant="15" id="480-j6-3dR"/>
+                            <constraint firstItem="Tak-uW-tG6" firstAttribute="top" secondItem="QAU-4G-yET" secondAttribute="bottom" constant="8" id="5ZV-v1-65K"/>
+                            <constraint firstAttribute="centerX" secondItem="Tak-uW-tG6" secondAttribute="centerX" id="E7A-OH-xC3"/>
+                            <constraint firstAttribute="centerX" secondItem="aTe-BN-vrL" secondAttribute="centerX" id="EZL-Ve-02c"/>
+                            <constraint firstItem="aTe-BN-vrL" firstAttribute="top" secondItem="QAU-4G-yET" secondAttribute="bottom" constant="35" id="i63-MT-ZdI"/>
+                            <constraint firstAttribute="centerX" secondItem="QAU-4G-yET" secondAttribute="centerX" id="kLc-rY-CHW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="34f-hL-o7Q"/>
+                    <connections>
+                        <outlet property="segmentControl" destination="Dea-ub-gTE" id="3AC-Cu-5ep"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pc3-ji-xAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227" y="839"/>
         </scene>
         <!--Ad Detail View Controller-->
         <scene sceneID="Yai-Sp-Y2i">
@@ -744,7 +799,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpB-dW-EYH">
                                                     <rect key="frame" x="8" y="8" width="304" height="97.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -836,7 +891,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKh-5e-w4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="844"/>
+            <point key="canvasLocation" x="705" y="844"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="g2U-JG-hp8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WR3-vL-8le" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oXI-uc-Baj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k0f-z5-JBf" kind="relationship" relationship="rootViewController" id="Nnf-s5-ZU8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxA-DG-g2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-189" y="844"/>
         </scene>
     </scenes>
     <resources>
