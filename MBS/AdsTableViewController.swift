@@ -93,9 +93,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         var ad = advertisements[indexPath.row]
         
         detailVC.advertisement = ad
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(self.detailVC, animated: true, completion: nil)
-        })
+        self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
     

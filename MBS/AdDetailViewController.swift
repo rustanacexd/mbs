@@ -21,6 +21,7 @@ class AdDetailViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,11 +30,6 @@ class AdDetailViewController: UITableViewController {
         descriptionLabel.text = advertisement.shortDescription.isEmpty ? "No Description" : advertisement.shortDescription
         imageView.file = advertisement.image
         imageView.loadInBackground()
-    }
-
-    
-    @IBAction func dismissModal(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -53,6 +49,11 @@ class AdDetailViewController: UITableViewController {
         
         if indexPath.row == 0 {
             cell.backgroundColor = UIColor.lightBlue()
+            var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            var blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = CGRect(x: 0, y: cell.contentView.frame.height - 50, width: cell.contentView.frame.width, height: 50)
+            cell.contentView.insertSubview(blurEffectView, aboveSubview: imageView)
+            
         }
         
         

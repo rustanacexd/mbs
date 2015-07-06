@@ -33,7 +33,11 @@ class ListTableViewController: AdsTableViewController {
                 }
             }
             }, withAnimator: PacmanAnimator())
-        
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         //Inital Fetch
@@ -41,7 +45,6 @@ class ListTableViewController: AdsTableViewController {
             self.advertisements = ads
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
-
     }
 
     // MARK: - Navigation

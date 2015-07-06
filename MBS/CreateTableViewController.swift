@@ -273,7 +273,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         
         let newLength = count(textView.text) + count(text) - range.length
         
-        return textView.tag == titleTextViewTag ? newLength <= 55 : newLength <= 320
+        return textView.tag == titleTextViewTag ? newLength <= 49 : newLength <= 320
     }
     
     override func prefersStatusBarHidden() -> Bool {

@@ -686,37 +686,27 @@
                         <sections>
                             <tableViewSection id="AWL-8F-bgx">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="308" id="R4O-32-mNX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="263" id="R4O-32-mNX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R4O-32-mNX" id="Uq7-aJ-qkx">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GUq-y6-VG0" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="307.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="262.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-jY-MJk">
-                                                    <rect key="frame" x="8" y="195" width="304" height="68"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="68" id="ufh-5u-Qzc"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-jY-MJk">
+                                                    <rect key="frame" x="8" y="218" width="304" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcA-af-eSg" userLabel="close">
-                                                    <rect key="frame" x="8" y="27" width="19" height="22"/>
-                                                    <state key="normal" image="close"/>
-                                                    <connections>
-                                                        <action selector="dismissModal:" destination="WpM-yx-D0O" eventType="touchUpInside" id="OxJ-on-3CY"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="CsD-jY-MJk" secondAttribute="trailing" id="6mK-Iw-jlG"/>
                                                 <constraint firstItem="GUq-y6-VG0" firstAttribute="leading" secondItem="Uq7-aJ-qkx" secondAttribute="leading" id="ACZ-M0-XZo"/>
                                                 <constraint firstAttribute="bottom" secondItem="GUq-y6-VG0" secondAttribute="bottom" id="MjZ-E0-yXw"/>
+                                                <constraint firstAttribute="bottom" secondItem="CsD-jY-MJk" secondAttribute="bottom" constant="25" id="cBs-nN-WQT"/>
                                                 <constraint firstItem="CsD-jY-MJk" firstAttribute="leading" secondItem="Uq7-aJ-qkx" secondAttribute="leadingMargin" id="cjd-yY-Z3J"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="CsD-jY-MJk" secondAttribute="bottom" constant="0.5" id="iHr-3Y-K6t"/>
                                                 <constraint firstItem="GUq-y6-VG0" firstAttribute="top" secondItem="Uq7-aJ-qkx" secondAttribute="top" id="kza-m8-kk0"/>
                                                 <constraint firstAttribute="trailing" secondItem="GUq-y6-VG0" secondAttribute="trailing" id="ymh-Tl-qTk"/>
                                             </constraints>
