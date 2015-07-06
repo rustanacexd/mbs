@@ -73,7 +73,7 @@ class AdDetailViewController: UITableViewController {
         
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.detailTextLabel?.textColor = UIColor.lightBlue()
+        cell.detailTextLabel?.textColor = UIColor.facebookBlue()
         
     }
     
