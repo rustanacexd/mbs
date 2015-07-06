@@ -10,9 +10,9 @@ import UIKit
 import ParseUI
 
 class AdTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var adImage: UIImageView!
+    @IBOutlet weak var adImage: PFImageView!
     @IBOutlet weak var sellerLabel: UILabel!
     @IBOutlet weak var datePostedLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -21,7 +21,7 @@ class AdTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
- 
+        
         titleLabel.sizeThatFits(titleLabel.frame.size)
         
         var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)

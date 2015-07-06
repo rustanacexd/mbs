@@ -8,6 +8,7 @@
 
 import UIKit
 import ParseFacebookUtilsV4
+import ParseUI
 import Onboard
 
 

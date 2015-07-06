@@ -19,9 +19,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
             self.tableView.reloadData()
         }
     }
-    
-    let adImage = PFImageView(image: UIImage(named: "image-placeholder"))
-    var adUIImage: UIImage!
+ 
     var filteredAdvertisements:[Advertisement] = []
     
     override func viewDidLoad() {
@@ -58,16 +56,8 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         let ad = advertisements[indexPath.row]
         cell.titleLabel.text = ad.title
         cell.priceLabel.text = "\(ad.price) PHP"
-        
-        adImage.file = ad.image
-        adImage.loadInBackground { (image: UIImage?, error: NSError?) -> Void in
-            if error == nil {
-                self.adUIImage = image!
-            }
-        }
-        
-        cell.adImage.image = adUIImage
-        
+        cell.adImage.file = ad.image
+        cell.adImage.loadInBackground()
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
         
