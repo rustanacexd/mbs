@@ -47,6 +47,8 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         //scroll to top
         tableView.scrollsToTop = true
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
     }
     
     func selectedSegment(control: DZNSegmentedControl) {
@@ -84,6 +86,14 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         cell.adImage.loadInBackground()
         cell.datePostedLabel.text = ad.createdAt!.timeAgoSinceNow()
         cell.sellerLabel.text = ad.displayName
+        
+//        var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+//        var blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        
+//        blurEffectView.frame = CGRect(x: 0, y: cell.bounds.height - 40,
+//            width: cell.bounds.width, height: 40)
+//        
+//        cell.contentView.insertSubview(blurEffectView, aboveSubview: cell.adImage)
    
         return cell
     }
@@ -93,6 +103,7 @@ class AdsTableViewController: UITableViewController, DZNSegmentedControlDelegate
         var ad = advertisements[indexPath.row]
         
         detailVC.advertisement = ad
+        
         self.navigationController?.pushViewController(detailVC, animated: true)
         
     }

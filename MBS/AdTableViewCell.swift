@@ -28,7 +28,7 @@ class AdTableViewCell: UITableViewCell {
         var blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         blurEffectView.frame = CGRect(x: 0, y: contentView.frame.height - 40,
-            width: contentView.frame.width, height: 40)
+            width: bounds.width, height: 40)
         
         contentView.insertSubview(blurEffectView, aboveSubview: adImage)
         
@@ -47,5 +47,11 @@ class AdTableViewCell: UITableViewCell {
         
         self.selectionStyle = .None
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        contentView.setNeedsLayout()
+//        contentView.layoutIfNeeded()
+//    }
     
 }
