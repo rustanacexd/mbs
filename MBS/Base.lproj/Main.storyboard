@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="k0f-z5-JBf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WR3-vL-8le">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -700,14 +700,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purok Gugma, Pagadian City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTe-BN-vrL">
-                                <rect key="frame" x="83.5" y="264" width="153.5" height="16.5"/>
+                                <rect key="frame" x="83" y="264" width="153.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dea-ub-gTE">
-                                <rect key="frame" x="0.0" y="288" width="320" height="41"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SU7-5X-ZLh">
+                                <rect key="frame" x="0.0" y="358" width="320" height="210"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="k0f-z5-JBf" id="k7b-Hv-poi"/>
+                                    <outlet property="delegate" destination="k0f-z5-JBf" id="su1-Cx-Qsi"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dea-ub-gTE">
+                                <rect key="frame" x="0.0" y="288" width="320" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="LQC-ua-Ntv"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -715,14 +727,25 @@
                             <constraint firstItem="QAU-4G-yET" firstAttribute="top" secondItem="pbv-7j-DT7" secondAttribute="bottom" constant="15" id="480-j6-3dR"/>
                             <constraint firstItem="Tak-uW-tG6" firstAttribute="top" secondItem="QAU-4G-yET" secondAttribute="bottom" constant="8" id="5ZV-v1-65K"/>
                             <constraint firstAttribute="centerX" secondItem="Tak-uW-tG6" secondAttribute="centerX" id="E7A-OH-xC3"/>
+                            <constraint firstAttribute="trailing" secondItem="Dea-ub-gTE" secondAttribute="trailing" id="ESH-tf-5Vb"/>
                             <constraint firstAttribute="centerX" secondItem="aTe-BN-vrL" secondAttribute="centerX" id="EZL-Ve-02c"/>
+                            <constraint firstItem="Dea-ub-gTE" firstAttribute="top" secondItem="aTe-BN-vrL" secondAttribute="bottom" constant="7.5" id="Ipe-Ob-H6e"/>
+                            <constraint firstItem="Dea-ub-gTE" firstAttribute="leading" secondItem="Nu7-RN-LrF" secondAttribute="leading" id="SY7-7U-nHk"/>
+                            <constraint firstItem="SU7-5X-ZLh" firstAttribute="top" secondItem="Dea-ub-gTE" secondAttribute="bottom" id="ZxY-1t-WHC"/>
                             <constraint firstItem="aTe-BN-vrL" firstAttribute="top" secondItem="QAU-4G-yET" secondAttribute="bottom" constant="35" id="i63-MT-ZdI"/>
                             <constraint firstAttribute="centerX" secondItem="QAU-4G-yET" secondAttribute="centerX" id="kLc-rY-CHW"/>
+                            <constraint firstAttribute="bottom" secondItem="SU7-5X-ZLh" secondAttribute="bottom" id="nFw-nc-Cj9"/>
+                            <constraint firstAttribute="trailing" secondItem="SU7-5X-ZLh" secondAttribute="trailing" id="qJU-H1-T5b"/>
+                            <constraint firstItem="SU7-5X-ZLh" firstAttribute="leading" secondItem="Nu7-RN-LrF" secondAttribute="leading" id="xri-LK-Gep"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="34f-hL-o7Q"/>
                     <connections>
+                        <outlet property="locationLabel" destination="aTe-BN-vrL" id="A8U-0p-KW3"/>
+                        <outlet property="profileImage" destination="QAU-4G-yET" id="MAT-wf-1Kh"/>
                         <outlet property="segmentControl" destination="Dea-ub-gTE" id="3AC-Cu-5ep"/>
+                        <outlet property="tableView" destination="SU7-5X-ZLh" id="hSM-2N-qMq"/>
+                        <outlet property="usernameLabel" destination="Tak-uW-tG6" id="2oM-Q7-Dkq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pc3-ji-xAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
