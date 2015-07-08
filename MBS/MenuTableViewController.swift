@@ -20,7 +20,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.revealViewController().rearViewRevealWidth = tableView.frame.size.width * 0.8
+        self.revealViewController().rearViewRevealWidth = tableView.frame.size.width * 0.6
         self.revealViewController().frontViewShadowOpacity = 0
         menuBar = UIBarButtonItem(title: "Menu", style: UIBarButtonItemStyle.Plain,
             target: self.revealViewController(), action: "revealToggle:")

@@ -744,7 +744,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpB-dW-EYH">
                                                     <rect key="frame" x="8" y="8" width="304" height="97.5"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -854,8 +854,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="flC-TL-EhG"/>
+        <segue reference="BbZ-6G-gl4"/>
         <segue reference="wwE-0x-RSW"/>
-        <segue reference="Ehw-ea-dhv"/>
         <segue reference="Uwd-rL-3X5"/>
     </inferredMetricsTieBreakers>
 </document>
