@@ -8,7 +8,6 @@
 
 import UIKit
 import ParseUI
-import Parse
 import DateTools
 
 class AdDetailViewController: UITableViewController {

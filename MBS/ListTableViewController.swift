@@ -8,9 +8,6 @@
 
 import UIKit
 import DZNSegmentedControl
-import DateTools
-import ParseUI
-import Parse
 import MBProgressHUD
 
 class ListTableViewController: UITableViewController, DZNSegmentedControlDelegate {
