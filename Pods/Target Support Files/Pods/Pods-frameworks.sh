@@ -48,7 +48,6 @@ code_sign() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework 'ActionSheetPicker_3_0.framework'
   install_framework 'Bolts.framework'
   install_framework 'DZNSegmentedControl.framework'
   install_framework 'DateTools.framework'
@@ -63,7 +62,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Refresher.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework 'ActionSheetPicker_3_0.framework'
   install_framework 'Bolts.framework'
   install_framework 'DZNSegmentedControl.framework'
   install_framework 'DateTools.framework'

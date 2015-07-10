@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import ActionSheetPicker_3_0
 
 class CreateTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -173,43 +172,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if indexPath.row == 3 || indexPath.row == 4 {
-            
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .Done,
-                target: self, action: "endEditing:")
-            
-            let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel,
-                target: self, action: "endEditing:")
-            
-            doneButton.tintColor = UIColor.facebookBlue()
-            cancelButton.tintColor = UIColor.facebookBlue()
-            
-            let currentCell = tableView.cellForRowAtIndexPath(indexPath)!
-            
-            var action:ActionSheetStringPicker!
-            
-            if indexPath.row == 3 {
-                action = ActionSheetStringPicker(title: "Select a category", rows: categories,
-                    initialSelection: 0, doneBlock: { (pciker, selectedIndex, value) -> Void in
-                        
-                        currentCell.detailTextLabel?.text = "\(value)"
-                        self.category = "\(value)"
-                        
-                    }, cancelBlock: nil, origin: self.view)
-            }
-            
-            if indexPath.row == 4 {
-                action = ActionSheetStringPicker(title: "Select condition", rows: conditions,
-                    initialSelection: 0, doneBlock: { (pciker, selectedIndex, value) -> Void in
-                        currentCell.detailTextLabel?.text = "\(value)"
-                        self.condition  = "\(value)"
-                    }, cancelBlock: nil, origin: self.view)
-            }
-            
-            action.setDoneButton(doneButton)
-            action.setCancelButton(cancelButton)
-            action.showActionSheetPicker()
-        }
+       
         
     }
     

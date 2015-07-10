@@ -1,5 +1,4 @@
 PODS:
-  - ActionSheetPicker-3.0 (1.5.1)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
     - Bolts/Tasks (= 1.2.0)
@@ -35,7 +34,6 @@ PODS:
   - Refresher (0.1.2)
 
 DEPENDENCIES:
-  - ActionSheetPicker-3.0 (~> 1.5.1)
   - DateTools
   - DZNSegmentedControl
   - FBSDKCoreKit (~> 4.2)
@@ -48,7 +46,6 @@ DEPENDENCIES:
   - Refresher
 
 SPEC CHECKSUMS:
-  ActionSheetPicker-3.0: de0f71e30495ed0192f7d16d0fddcab6882a0ca3
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DZNSegmentedControl: 8a7fdd743672742c692106f4456aaede10d43131
