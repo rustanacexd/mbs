@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="c5f-Ws-V2I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="c5f-Ws-V2I">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -478,30 +478,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SVC-XB-fY7">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SVC-XB-fY7" id="rjm-Fx-JYN">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share it on Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YV-uz-CzJ">
-                                                    <rect key="frame" x="15" y="20" width="152" height="22"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esx-c7-N90">
-                                                    <rect key="frame" x="263" y="14" width="51" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="49" id="tc6-1H-G3m"/>
-                                                    </constraints>
-                                                    <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="esx-c7-N90" secondAttribute="centerY" id="05z-tR-z9u"/>
-                                                <constraint firstItem="esx-c7-N90" firstAttribute="trailing" secondItem="rjm-Fx-JYN" secondAttribute="trailingMargin" id="7W4-56-pH0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fYz-Vf-NYc">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fYz-Vf-NYc" id="Rgy-qK-niK">
@@ -538,7 +514,6 @@
                     <connections>
                         <outlet property="contactTextField" destination="wIM-n1-7zv" id="lQd-2b-doU"/>
                         <outlet property="descriptionTextView" destination="LKs-zp-hq3" id="Awh-tR-BE9"/>
-                        <outlet property="fbShareSwitch" destination="esx-c7-N90" id="Ntg-a4-t2H"/>
                         <outlet property="imageView" destination="PKX-tE-YTZ" id="poC-L3-fyN"/>
                         <outlet property="priceTextField" destination="XZq-8A-Hmd" id="hzJ-VA-RZl"/>
                         <outlet property="titleTextView" destination="yzt-K5-Aeg" id="zfF-6Y-Jlo"/>

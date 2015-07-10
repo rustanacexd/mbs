@@ -16,7 +16,6 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var fbShareSwitch: UISwitch!
     
     var condition: String = ""
     var category: String = ""
@@ -57,10 +56,7 @@ class CreateTableViewController: UITableViewController, UITextFieldDelegate, UIT
         titleTextView.textColor = UIColor.whiteColor()
         
         priceTextField.textColor = UIColor.facebookBlue()
-        contactTextField.textColor = UIColor.facebookBlue()
-        fbShareSwitch.onTintColor = UIColor.facebookBlue()
-
-        
+        contactTextField.textColor = UIColor.facebookBlue()        
         
         let pricePlaceholder = NSAttributedString(string: "Price",
             attributes: [NSForegroundColorAttributeName:UIColor.facebookBlue()])
