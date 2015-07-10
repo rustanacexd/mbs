@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		94439D121B3C0C8700A72D3E /* Extensions+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94439D111B3C0C8700A72D3E /* Extensions+Helpers.swift */; };
 		944A5F981B469C9500D6F2DA /* Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 944A5F971B469C9500D6F2DA /* Notes.txt */; };
-		944A5F9A1B479ABF00D6F2DA /* AdsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944A5F991B479ABF00D6F2DA /* AdsTableViewController.swift */; };
 		944A5F9C1B47E1D300D6F2DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944A5F9B1B47E1D300D6F2DA /* SearchViewController.swift */; };
 		945125671B3A928A0013658C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945125661B3A928A0013658C /* LoginViewController.swift */; };
 		945125691B3A999F0013658C /* LoginConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945125681B3A999F0013658C /* LoginConfigViewController.swift */; };
@@ -20,7 +19,6 @@
 		94BFE4DC1B3D4BC600C80481 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFE4DB1B3D4BC600C80481 /* Models.swift */; };
 		94BFE4DE1B3D53AE00C80481 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFE4DD1B3D53AE00C80481 /* DetailViewController.swift */; };
 		94C4EB021B4AA33400D4B10A /* AdDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C4EB011B4AA33400D4B10A /* AdDetailViewController.swift */; };
-		94CBCE1A1B4289C10061B908 /* GlobalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CBCE191B4289C10061B908 /* GlobalListViewController.swift */; };
 		94CBCE1C1B428E1C0061B908 /* GlobalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CBCE1B1B428E1C0061B908 /* GlobalSearchViewController.swift */; };
 		94CBCE1E1B42917D0061B908 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CBCE1D1B42917D0061B908 /* AdTableViewCell.swift */; };
 		94CBCE201B4293680061B908 /* AdTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CBCE1F1B4293680061B908 /* AdTableCell.xib */; };
@@ -64,7 +62,6 @@
 		94311F8F1B3C15DC00367DC5 /* MBS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBS-Bridging-Header.h"; sourceTree = "<group>"; };
 		94439D111B3C0C8700A72D3E /* Extensions+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+Helpers.swift"; sourceTree = "<group>"; };
 		944A5F971B469C9500D6F2DA /* Notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
-		944A5F991B479ABF00D6F2DA /* AdsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsTableViewController.swift; sourceTree = "<group>"; };
 		944A5F9B1B47E1D300D6F2DA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		945125661B3A928A0013658C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		945125681B3A999F0013658C /* LoginConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginConfigViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +73,6 @@
 		94BFE4DB1B3D4BC600C80481 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		94BFE4DD1B3D53AE00C80481 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		94C4EB011B4AA33400D4B10A /* AdDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdDetailViewController.swift; sourceTree = "<group>"; };
-		94CBCE191B4289C10061B908 /* GlobalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalListViewController.swift; sourceTree = "<group>"; };
 		94CBCE1B1B428E1C0061B908 /* GlobalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSearchViewController.swift; sourceTree = "<group>"; };
 		94CBCE1D1B42917D0061B908 /* AdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		94CBCE1F1B4293680061B908 /* AdTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdTableCell.xib; sourceTree = "<group>"; };
@@ -189,8 +185,6 @@
 				94D7A4431B3C465300BA6A4C /* CategoriesViewController.swift */,
 				94D7A44C1B3CF87B00BA6A4C /* MenuTableViewController.swift */,
 				94BFE4D91B3D4B9900C80481 /* ListTableViewController.swift */,
-				94CBCE191B4289C10061B908 /* GlobalListViewController.swift */,
-				944A5F991B479ABF00D6F2DA /* AdsTableViewController.swift */,
 				94CBCE1B1B428E1C0061B908 /* GlobalSearchViewController.swift */,
 				944A5F9B1B47E1D300D6F2DA /* SearchViewController.swift */,
 				948F19911B41046D00522D92 /* CreateTableViewController.swift */,
@@ -443,10 +437,8 @@
 				945125671B3A928A0013658C /* LoginViewController.swift in Sources */,
 				94BFE4DA1B3D4B9900C80481 /* ListTableViewController.swift in Sources */,
 				94BFE4D21B3CFA7100C80481 /* SWRevealViewController.m in Sources */,
-				94CBCE1A1B4289C10061B908 /* GlobalListViewController.swift in Sources */,
 				94CBCE1E1B42917D0061B908 /* AdTableViewCell.swift in Sources */,
 				94CBCE1C1B428E1C0061B908 /* GlobalSearchViewController.swift in Sources */,
-				944A5F9A1B479ABF00D6F2DA /* AdsTableViewController.swift in Sources */,
 				94EDB5FF1B3A3F0100312D88 /* AppDelegate.swift in Sources */,
 				94D7A4441B3C465300BA6A4C /* CategoriesViewController.swift in Sources */,
 				94BFE4D81B3D3EC900C80481 /* CategoryViewCell.swift in Sources */,

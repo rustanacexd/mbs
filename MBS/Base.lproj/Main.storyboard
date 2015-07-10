@@ -27,35 +27,6 @@
             </objects>
             <point key="canvasLocation" x="179" y="-596"/>
         </scene>
-        <!--Global Feed-->
-        <scene sceneID="0pm-KQ-Tah">
-            <objects>
-                <tableViewController id="8RV-BS-0ct" customClass="GlobalListViewController" customModule="MBS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="180" sectionHeaderHeight="22" sectionFooterHeight="22" id="mg0-Vp-TdG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="8RV-BS-0ct" id="uTG-yV-k2Y"/>
-                            <outlet property="delegate" destination="8RV-BS-0ct" id="g8Y-pC-BCO"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Global Feed" id="Ght-DZ-Eke">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="djQ-zC-zGR"/>
-                        <barButtonItem key="rightBarButtonItem" image="search" id="Li0-gA-FOk" userLabel="Search">
-                            <connections>
-                                <segue destination="e28-wR-RZS" kind="push" id="wwE-0x-RSW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="djQ-zC-zGR" id="BZc-kx-gjv"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FJo-n5-SIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="415" y="101"/>
-        </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="PO1-7G-mJy">
             <objects>
@@ -130,29 +101,12 @@
                                             <segue destination="OBY-IG-Qvo" kind="modal" id="BbZ-6G-gl4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="VFo-Zo-Ql9" style="IBUITableViewCellStyleDefault" id="v2j-LP-F11">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2j-LP-F11" id="eo9-gu-7fc">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Feed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VFo-Zo-Ql9">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="6RE-9C-tw7" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSeguePushController" id="nfv-Do-V2K"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="XbU-0j-DaG" style="IBUITableViewCellStyleDefault" id="e5f-0h-MDY">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e5f-0h-MDY" id="k9Y-wE-XLt">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XbU-0j-DaG">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Browse Ads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XbU-0j-DaG">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -638,24 +592,6 @@
             <point key="canvasLocation" x="2134" y="117"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="hUT-bI-YQQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6RE-9C-tw7" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K5y-Le-t7y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8RV-BS-0ct" kind="relationship" relationship="rootViewController" id="xJg-th-Gm5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wAm-LW-9Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="13" y="101"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="6Q9-F5-AXW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DcO-C2-7nG" sceneMemberID="viewController">
@@ -853,9 +789,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="flC-TL-EhG"/>
-        <segue reference="BbZ-6G-gl4"/>
-        <segue reference="wwE-0x-RSW"/>
         <segue reference="Uwd-rL-3X5"/>
+        <segue reference="BbZ-6G-gl4"/>
+        <segue reference="flC-TL-EhG"/>
     </inferredMetricsTieBreakers>
 </document>
